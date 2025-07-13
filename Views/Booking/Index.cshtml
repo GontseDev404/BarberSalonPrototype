@@ -2,91 +2,152 @@
     ViewData["Title"] = "Book Appointment";
 }
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-center mb-5">Book Your Appointment</h1>
-            <p class="text-center text-muted mb-5">Schedule your visit with our professional team.</p>
+<!-- Hero Section -->
+<div class="hero-banner text-white text-center">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-3 fw-bold mb-4 fade-in-up">Book Your Appointment</h1>
+                <p class="lead mb-4 fade-in-up" style="animation-delay: 0.2s;">Schedule your visit with our professional team and transform your look today</p>
+            </div>
         </div>
     </div>
+</div>
 
+<!-- Booking Form -->
+<div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card shadow">
-                <div class="card-body p-4">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Appointment Booking</h3>
+                </div>
+                <div class="card-body p-5">
                     <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name *</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required placeholder="Enter your phone number">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="service" class="form-label">Service Type *</label>
+                                <select class="form-select" id="service" name="service" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="fade-cut">Fade Cut - R120</option>
+                                    <option value="beard-trim">Beard Trim - R80</option>
+                                    <option value="haircut-style">Haircut & Style - R150</option>
+                                    <option value="kids-haircut">Kids Haircut - R90</option>
+                                    <option value="hair-color">Hair Color - R200</option>
+                                    <option value="hair-treatment">Hair Treatment - R180</option>
+                                    <option value="manicure">Manicure - R120</option>
+                                    <option value="pedicure">Pedicure - R150</option>
+                                    <option value="facial">Facial - R250</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone Number *</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="service" class="form-label">Service Type *</label>
-                            <select class="form-select" id="service" name="service" required>
-                                <option value="">Select a service...</option>
-                                <option value="fade-cut">Fade Cut - R120</option>
-                                <option value="beard-trim">Beard Trim - R80</option>
-                                <option value="haircut-style">Haircut & Style - R150</option>
-                                <option value="kids-haircut">Kids Haircut - R90</option>
-                                <option value="hair-color">Hair Color - R200</option>
-                                <option value="hair-treatment">Hair Treatment - R180</option>
-                                <option value="manicure">Manicure - R120</option>
-                                <option value="pedicure">Pedicure - R150</option>
-                                <option value="facial">Facial - R250</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="datetime" class="form-label">Preferred Date & Time *</label>
                             <input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="notes" class="form-label">Additional Notes</label>
-                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any special requests or preferences..."></textarea>
+                            <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="Any special requests, preferences, or specific styling instructions..."></textarea>
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg">
+                            <button type="submit" class="btn btn-primary btn-lg py-3">
                                 <i class="fas fa-calendar-check me-2"></i>Book Appointment
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <div class="card mt-4 bg-light">
-                <div class="card-body">
-                    <h6 class="card-title"><i class="fas fa-info-circle me-2"></i>Booking Information</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li><i class="fas fa-clock me-2"></i>Appointments available Monday-Saturday</li>
-                        <li><i class="fas fa-calendar me-2"></i>Please book at least 24 hours in advance</li>
-                        <li><i class="fas fa-phone me-2"></i>For urgent bookings, call us directly</li>
-                    </ul>
+<!-- Booking Information -->
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card bg-light border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="booking-info-item">
+                                <i class="fas fa-clock fa-2x text-primary mb-2"></i>
+                                <h6 class="fw-bold">Flexible Hours</h6>
+                                <p class="text-muted small">Monday-Saturday<br>8:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="booking-info-item">
+                                <i class="fas fa-calendar fa-2x text-primary mb-2"></i>
+                                <h6 class="fw-bold">Advance Booking</h6>
+                                <p class="text-muted small">Book at least 24 hours<br>in advance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <div class="booking-info-item">
+                                <i class="fas fa-phone fa-2x text-primary mb-2"></i>
+                                <h6 class="fw-bold">Urgent Bookings</h6>
+                                <p class="text-muted small">Call us directly<br>for urgent requests</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .form-control:focus, .form-select:focus {
-        border-color: #0d6efd;
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    }
+<!-- Why Choose Us -->
+<div class="container py-5 bg-light rounded-4">
+    <div class="section-header">
+        <h1>Why Book With Us?</h1>
+        <p>Experience the difference of professional service and attention to detail</p>
+    </div>
     
-    .card {
-        border: none;
-        border-radius: 15px;
-    }
-</style> 
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h5>Expert Team</h5>
+                    <p class="text-muted">Our certified professionals have years of experience in the industry</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-clock fa-3x text-primary mb-3"></i>
+                    <h5>Punctual Service</h5>
+                    <p class="text-muted">We value your time and ensure appointments start on schedule</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h5>Quality Guarantee</h5>
+                    <p class="text-muted">We guarantee your satisfaction with every service we provide</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

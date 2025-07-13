@@ -4,26 +4,64 @@
     ViewData["Title"] = "Our Services";
 }
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-center mb-5">Our Services</h1>
-            <p class="text-center text-muted mb-5">Professional hair styling, barbering, and beauty services at competitive prices.</p>
+<!-- Hero Section -->
+<div class="hero-banner text-white text-center">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-3 fw-bold mb-4 fade-in-up">Our Services</h1>
+                <p class="lead mb-4 fade-in-up" style="animation-delay: 0.2s;">Professional hair styling, barbering, and beauty services at competitive prices</p>
+            </div>
         </div>
     </div>
+</div>
 
+<!-- Services Grid -->
+<div class="container py-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         @foreach (dynamic service in Model)
         {
             <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@service.Name</h5>
-                        <p class="card-text flex-grow-1">@service.Description</p>
-                        <div class="d-flex justify-content-between align-items-center mt-auto">
-                            <span class="badge bg-primary fs-6">@service.Price</span>
-                            <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-calendar-plus me-1"></i>Book Now
+                <div class="card h-100 service-card">
+                    <div class="card-body d-flex flex-column p-4">
+                        <div class="text-center mb-3">
+                            <div class="service-icon mb-3">
+                                @if (service.Name.ToString().Contains("Fade"))
+                                {
+                                    <i class="fas fa-cut fa-2x text-primary"></i>
+                                }
+                                else if (service.Name.ToString().Contains("Beard"))
+                                {
+                                    <i class="fas fa-user-tie fa-2x text-primary"></i>
+                                }
+                                else if (service.Name.ToString().Contains("Color"))
+                                {
+                                    <i class="fas fa-palette fa-2x text-primary"></i>
+                                }
+                                else if (service.Name.ToString().Contains("Kids"))
+                                {
+                                    <i class="fas fa-child fa-2x text-primary"></i>
+                                }
+                                else if (service.Name.ToString().Contains("Manicure") || service.Name.ToString().Contains("Pedicure"))
+                                {
+                                    <i class="fas fa-hand-sparkles fa-2x text-primary"></i>
+                                }
+                                else if (service.Name.ToString().Contains("Facial"))
+                                {
+                                    <i class="fas fa-spa fa-2x text-primary"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-cut fa-2x text-primary"></i>
+                                }
+                            </div>
+                            <h5 class="card-title fw-bold">@service.Name</h5>
+                        </div>
+                        <p class="card-text flex-grow-1 text-muted">@service.Description</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <span class="badge bg-primary fs-6 fw-bold">@service.Price</span>
+                            <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary">
+                                <i class="fas fa-calendar-plus me-2"></i>Book Now
                             </a>
                         </div>
                     </div>
@@ -31,33 +69,73 @@
             </div>
         }
     </div>
+</div>
 
-    <div class="row mt-5">
-        <div class="col-12 text-center">
-            <div class="card bg-light">
-                <div class="card-body">
-                    <h5 class="card-title">Ready to Book?</h5>
-                    <p class="card-text">Schedule your appointment with our easy online booking system.</p>
-                    <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">
-                        <i class="fas fa-calendar-check me-2"></i>Book Appointment
-                    </a>
+<!-- Call to Action -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card bg-gradient-primary text-white border-0">
+                <div class="card-body p-5 text-center">
+                    <h2 class="mb-3">Ready to Transform Your Look?</h2>
+                    <p class="lead mb-4">Book your appointment today and experience the difference our professional services make</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a asp-controller="Booking" asp-action="Index" class="btn btn-light btn-lg px-4">
+                            <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                        </a>
+                        <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-light btn-lg px-4">
+                            <i class="fas fa-phone me-2"></i>Call Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .card {
-        transition: transform 0.2s ease-in-out;
-    }
+<!-- Service Categories -->
+<div class="container py-5 bg-light rounded-4">
+    <div class="section-header">
+        <h1>Service Categories</h1>
+        <p>We offer a comprehensive range of services to meet all your grooming needs</p>
+    </div>
     
-    .card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .badge {
-        font-size: 1rem !important;
-        padding: 0.5rem 1rem !important;
-    }
-</style> 
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="card text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <i class="fas fa-cut fa-3x text-primary mb-3"></i>
+                    <h5>Hair Services</h5>
+                    <p class="text-muted">Professional cuts, styling, and treatments</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <i class="fas fa-user-tie fa-3x text-primary mb-3"></i>
+                    <h5>Beard Grooming</h5>
+                    <p class="text-muted">Expert trimming and styling</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <i class="fas fa-palette fa-3x text-primary mb-3"></i>
+                    <h5>Color Services</h5>
+                    <p class="text-muted">Professional coloring and highlights</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <i class="fas fa-spa fa-3x text-primary mb-3"></i>
+                    <h5>Beauty Services</h5>
+                    <p class="text-muted">Nail care and facial treatments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

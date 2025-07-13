@@ -1,25 +1,133 @@
 using Microsoft.AspNetCore.Mvc;
+using BarberSalonPrototype.Models;
+using BarberSalonPrototype.Services;
 
 namespace BarberSalonPrototype.Controllers
 {
     public class ServicesController : Controller
     {
-        public IActionResult Index()
-        {
-            var services = new List<object>
-            {
-                new { Name = "Fade Cut", Description = "Classic fade haircut with clean lines and modern styling", Price = "R120" },
-                new { Name = "Beard Trim", Description = "Professional beard trimming and shaping service", Price = "R80" },
-                new { Name = "Haircut & Style", Description = "Complete haircut with professional styling", Price = "R150" },
-                new { Name = "Kids Haircut", Description = "Specialized haircuts for children under 12", Price = "R90" },
-                new { Name = "Hair Color", Description = "Professional hair coloring and highlights", Price = "R200" },
-                new { Name = "Hair Treatment", Description = "Deep conditioning and hair treatment", Price = "R180" },
-                new { Name = "Manicure", Description = "Classic manicure with nail care", Price = "R120" },
-                new { Name = "Pedicure", Description = "Relaxing pedicure with foot care", Price = "R150" },
-                new { Name = "Facial", Description = "Rejuvenating facial treatment", Price = "R250" }
-            };
+        private readonly IServiceService _serviceService;
+        private readonly ILogger<ServicesController> _logger;
 
-            return View(services);
+        public ServicesController(IServiceService serviceService, ILogger<ServicesController> logger)
+        {
+            _serviceService = serviceService;
+            _logger = logger;
         }
+
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                _logger.LogInformation("Loading services page");
+                
+                var allServices = await _serviceService.GetAllServicesAsync();
+                var categories = await _serviceService.GetServiceCategoriesAsync();
+                
+                var viewModel = new ServicesViewModel
+                {
+                    Services = allServices.ToList(),
+                    Categories = categories.ToList(),
+                    SelectedCategory = null
+                };
+
+                return View(viewModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading services page");
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public async Task<IActionResult> Category(ServiceCategory category)
+        {
+            try
+            {
+                _logger.LogInformation("Loading services for category: {Category}", category);
+                
+                var services = await _serviceService.GetServicesByCategoryAsync(category);
+                var categories = await _serviceService.GetServiceCategoriesAsync();
+                
+                var viewModel = new ServicesViewModel
+                {
+                    Services = services.ToList(),
+                    Categories = categories.ToList(),
+                    SelectedCategory = category
+                };
+
+                return View("Index", viewModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading services for category: {Category}", category);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                _logger.LogInformation("Loading service details for ID: {Id}", id);
+                
+                var service = await _serviceService.GetServiceByIdAsync(id);
+                
+                if (service == null)
+                {
+                    _logger.LogWarning("Service not found with ID: {Id}", id);
+                    return NotFound();
+                }
+
+                return View(service);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading service details for ID: {Id}", id);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public async Task<IActionResult> Popular()
+        {
+            try
+            {
+                _logger.LogInformation("Loading popular services");
+                
+                var popularServices = await _serviceService.GetPopularServicesAsync();
+                
+                return View(popularServices);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading popular services");
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetServicesByCategory(ServiceCategory category)
+        {
+            try
+            {
+                _logger.LogInformation("Getting services for category: {Category}", category);
+                
+                var services = await _serviceService.GetServicesByCategoryAsync(category);
+                
+                return Json(new { success = true, services = services });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting services for category: {Category}", category);
+                return Json(new { success = false, message = "An error occurred while loading services" });
+            }
+        }
+    }
+
+    public class ServicesViewModel
+    {
+        public List<Service> Services { get; set; } = new List<Service>();
+        public List<ServiceCategory> Categories { get; set; } = new List<ServiceCategory>();
+        public ServiceCategory? SelectedCategory { get; set; }
     }
 } 

@@ -3,47 +3,127 @@
 }
 
 <!-- Hero Banner -->
-<div class="hero-banner text-white text-center py-5 mb-5">
-    <div class="container">
-        <h1 class="display-3 fw-bold mb-4">Welcome to BarberSalon</h1>
-        <p class="lead mb-4">Experience the finest in hair styling, barbering, and beauty services.</p>
-        <a asp-controller="Booking" asp-action="Index" class="btn btn-primary btn-lg px-4 py-2">
-            <i class="fas fa-calendar-check me-2"></i>Book Now
-        </a>
+<div class="hero-banner text-white text-center">
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-2 fw-bold mb-4 fade-in-up">Welcome to BarberSalon</h1>
+                <p class="lead mb-5 fade-in-up" style="animation-delay: 0.2s;">Experience the finest in hair styling, barbering, and beauty services. Where style meets excellence.</p>
+                <div class="fade-in-up" style="animation-delay: 0.4s;">
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-primary btn-lg px-5 py-3 me-3">
+                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                    </a>
+                    <a asp-controller="Services" asp-action="Index" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-cut me-2"></i>View Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container py-5">
+    <div class="section-header">
+        <h1>Why Choose Us</h1>
+        <p>We combine traditional craftsmanship with modern techniques to deliver exceptional results</p>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-star fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="card-title">Expert Team</h4>
+                    <p class="card-text">Our certified professionals have years of experience and stay updated with the latest trends and techniques.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-clock fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="card-title">Flexible Hours</h4>
+                    <p class="card-text">We offer convenient hours including evenings and Saturdays to fit your busy schedule.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center service-card">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-shield-alt fa-3x text-success"></i>
+                    </div>
+                    <h4 class="card-title">Quality Guarantee</h4>
+                    <p class="card-text">We use only premium products and guarantee your satisfaction with every service.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- Quick Links Section -->
-<div class="container mb-5">
-    <h2 class="text-center mb-4">Quick Links</h2>
+<div class="container py-5 bg-light rounded-4">
+    <div class="section-header">
+        <h1>Get Started</h1>
+        <p>Ready to transform your look? Choose your next step</p>
+    </div>
+    
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <i class="fas fa-cut fa-3x text-primary mb-3"></i>
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-cut fa-3x text-primary"></i>
+                    </div>
                     <h5 class="card-title">Our Services</h5>
-                    <p class="card-text">Explore our range of professional hair and beauty services.</p>
+                    <p class="card-text">Explore our comprehensive range of professional hair and beauty services.</p>
                     <a asp-controller="Services" asp-action="Index" class="btn btn-outline-primary">View Services</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-calendar-alt fa-3x text-primary"></i>
+                    </div>
                     <h5 class="card-title">Book Appointment</h5>
                     <p class="card-text">Schedule your next visit with our easy online booking system.</p>
                     <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary">Book Now</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-users fa-3x text-primary"></i>
+                    </div>
                     <h5 class="card-title">Meet Our Team</h5>
                     <p class="card-text">Get to know our talented professionals and their expertise.</p>
                     <a asp-controller="Staff" asp-action="Index" class="btn btn-outline-primary">Our Team</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="card bg-gradient-primary text-white border-0">
+                <div class="card-body p-5">
+                    <h2 class="mb-3">Ready for Your Transformation?</h2>
+                    <p class="lead mb-4">Join hundreds of satisfied customers who trust us with their style</p>
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-light btn-lg px-5">
+                        <i class="fas fa-calendar-check me-2"></i>Book Your Appointment
+                    </a>
                 </div>
             </div>
         </div>
