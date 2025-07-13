@@ -1,0 +1,68 @@
+@model IEnumerable<BarberSalonPrototype.Models.StaffMember>
+
+@{
+    ViewData["Title"] = "Our Team";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5">Meet Our Team</h1>
+            <p class="text-center text-muted mb-5">Our talented professionals are here to provide you with the best salon experience.</p>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var staffMember in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="position-relative">
+                        <img src="@staffMember.ImageUrl" class="card-img-top" alt="@staffMember.FullName" style="height: 250px; object-fit: cover;">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-primary">@staffMember.Role</span>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@staffMember.FullName</h5>
+                        <p class="card-text text-muted">@staffMember.Role</p>
+                        <p class="card-text flex-grow-1">@(staffMember.Description.Length > 100 ? staffMember.Description.Substring(0, 100) + "..." : staffMember.Description)</p>
+                        
+                        <div class="mb-3">
+                            @foreach (var specialization in staffMember.Specializations.Take(3))
+                            {
+                                <span class="badge bg-secondary me-1">@specialization</span>
+                            }
+                            @if (staffMember.Specializations.Count > 3)
+                            {
+                                <span class="badge bg-secondary">+@(staffMember.Specializations.Count - 3) more</span>
+                            }
+                        </div>
+                        
+                        <a asp-action="Details" asp-route-id="@staffMember.Id" class="btn btn-outline-primary mt-auto">
+                            View Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-img-top {
+        transition: filter 0.2s ease-in-out;
+    }
+    
+    .card:hover .card-img-top {
+        filter: brightness(1.1);
+    }
+</style> 

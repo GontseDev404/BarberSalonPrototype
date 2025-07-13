@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5">Book Your Appointment</h1>
+            <p class="text-center text-muted mb-5">Schedule your visit with our professional team.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Service Type *</label>
+                            <select class="form-select" id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="fade-cut">Fade Cut - R120</option>
+                                <option value="beard-trim">Beard Trim - R80</option>
+                                <option value="haircut-style">Haircut & Style - R150</option>
+                                <option value="kids-haircut">Kids Haircut - R90</option>
+                                <option value="hair-color">Hair Color - R200</option>
+                                <option value="hair-treatment">Hair Treatment - R180</option>
+                                <option value="manicure">Manicure - R120</option>
+                                <option value="pedicure">Pedicure - R150</option>
+                                <option value="facial">Facial - R250</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="datetime" class="form-label">Preferred Date & Time *</label>
+                            <input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any special requests or preferences..."></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4 bg-light">
+                <div class="card-body">
+                    <h6 class="card-title"><i class="fas fa-info-circle me-2"></i>Booking Information</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="fas fa-clock me-2"></i>Appointments available Monday-Saturday</li>
+                        <li><i class="fas fa-calendar me-2"></i>Please book at least 24 hours in advance</li>
+                        <li><i class="fas fa-phone me-2"></i>For urgent bookings, call us directly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+</style> 

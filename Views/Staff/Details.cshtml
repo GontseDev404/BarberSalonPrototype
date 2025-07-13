@@ -1,0 +1,157 @@
+@model BarberSalonPrototype.Models.StaffMember
+
+@{
+    ViewData["Title"] = $"{Model.FullName} - Profile";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Staff" asp-action="Index">Our Team</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.FullName</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Staff Member Info -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow">
+                <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.FullName" style="height: 400px; object-fit: cover;">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.FullName</h2>
+                    <p class="text-primary fw-bold">@Model.Role</p>
+                    <p class="card-text">@Model.Description</p>
+                    
+                    <!-- Specializations -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold">Specializations:</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var specialization in Model.Specializations)
+                            {
+                                <span class="badge bg-primary">@specialization</span>
+                            }
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="mb-3">
+                        <h6 class="fw-bold">Follow @Model.FullName:</h6>
+                        <div class="d-flex gap-3">
+                            @if (!string.IsNullOrEmpty(Model.InstagramUrl))
+                            {
+                                <a href="@Model.InstagramUrl" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-instagram fa-2x text-danger"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.FacebookUrl))
+                            {
+                                <a href="@Model.FacebookUrl" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-facebook fa-2x text-primary"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.TikTokUrl))
+                            {
+                                <a href="@Model.TikTokUrl" target="_blank" class="text-decoration-none">
+                                    <i class="fab fa-tiktok fa-2x text-dark"></i>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gallery -->
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h3 class="mb-0">@Model.FullName's Gallery</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.Gallery.Any())
+                    {
+                        <div id="staffGallery" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                @for (int i = 0; i < Model.Gallery.Count; i++)
+                                {
+                                    <button type="button" data-bs-target="#staffGallery" data-bs-slide-to="@i" 
+                                            class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")" 
+                                            aria-label="Slide @(i + 1)"></button>
+                                }
+                            </div>
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.Gallery.Count; i++)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img src="@Model.Gallery[i].ImageUrl" class="d-block w-100" alt="@Model.Gallery[i].Caption" 
+                                             style="height: 400px; object-fit: cover;">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>@Model.Gallery[i].Caption</h5>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#staffGallery" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#staffGallery" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Thumbnail Navigation -->
+                        <div class="row mt-3">
+                            @for (int i = 0; i < Model.Gallery.Count; i++)
+                            {
+                                <div class="col-3 mb-2">
+                                    <img src="@Model.Gallery[i].ImageUrl" class="img-thumbnail" alt="@Model.Gallery[i].Caption" 
+                                         style="height: 80px; object-fit: cover; cursor: pointer;"
+                                         onclick="$('#staffGallery').carousel(@i)">
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-images fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">No gallery images available yet.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Back to Team Button -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a asp-controller="Staff" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Our Team
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .carousel-item img {
+        border-radius: 8px;
+    }
+    
+    .img-thumbnail:hover {
+        opacity: 0.8;
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .social-icon:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+    }
+</style> 

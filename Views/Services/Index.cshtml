@@ -1,0 +1,63 @@
+@model IEnumerable<object>
+
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5">Our Services</h1>
+            <p class="text-center text-muted mb-5">Professional hair styling, barbering, and beauty services at competitive prices.</p>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (dynamic service in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@service.Name</h5>
+                        <p class="card-text flex-grow-1">@service.Description</p>
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <span class="badge bg-primary fs-6">@service.Price</span>
+                            <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-calendar-plus me-1"></i>Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Ready to Book?</h5>
+                    <p class="card-text">Schedule your appointment with our easy online booking system.</p>
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">
+                        <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .badge {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+</style> 

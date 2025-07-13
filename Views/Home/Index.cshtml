@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Banner -->
+<div class="hero-banner text-white text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4">Welcome to BarberSalon</h1>
+        <p class="lead mb-4">Experience the finest in hair styling, barbering, and beauty services.</p>
+        <a asp-controller="Booking" asp-action="Index" class="btn btn-primary btn-lg px-4 py-2">
+            <i class="fas fa-calendar-check me-2"></i>Book Now
+        </a>
+    </div>
+</div>
+
+<!-- Quick Links Section -->
+<div class="container mb-5">
+    <h2 class="text-center mb-4">Quick Links</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-cut fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Our Services</h5>
+                    <p class="card-text">Explore our range of professional hair and beauty services.</p>
+                    <a asp-controller="Services" asp-action="Index" class="btn btn-outline-primary">View Services</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Book Appointment</h5>
+                    <p class="card-text">Schedule your next visit with our easy online booking system.</p>
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Meet Our Team</h5>
+                    <p class="card-text">Get to know our talented professionals and their expertise.</p>
+                    <a asp-controller="Staff" asp-action="Index" class="btn btn-outline-primary">Our Team</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
