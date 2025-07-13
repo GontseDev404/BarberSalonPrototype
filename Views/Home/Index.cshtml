@@ -2,130 +2,129 @@
     ViewData["Title"] = "Home";
 }
 
-<!-- Hero Banner -->
-<div class="hero-banner text-white text-center">
-    <div class="container position-relative">
-        <div class="row align-items-center min-vh-75">
-            <div class="col-lg-8 mx-auto">
-                <h1 class="display-2 fw-bold mb-4 fade-in-up">Welcome to BarberSalon</h1>
-                <p class="lead mb-5 fade-in-up" style="animation-delay: 0.2s;">Experience the finest in hair styling, barbering, and beauty services. Where style meets excellence.</p>
-                <div class="fade-in-up" style="animation-delay: 0.4s;">
-                    <a asp-controller="Booking" asp-action="Index" class="btn btn-primary btn-lg px-5 py-3 me-3">
-                        <i class="fas fa-calendar-check me-2"></i>Book Now
-                    </a>
-                    <a asp-controller="Services" asp-action="Index" class="btn btn-outline-light btn-lg px-5 py-3">
-                        <i class="fas fa-cut me-2"></i>View Services
-                    </a>
-                </div>
+<!-- Hero Section -->
+<section class="home-hero py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 class="display-4 fw-bold mb-3">Transform Your Beauty</h1>
+                <p class="lead mb-4">Experience premium beauty services with our expert team. From hair styling to skincare treatments, we bring out your natural radiance.</p>
+                <a asp-controller="Booking" asp-action="Index" class="btn btn-dark btn-lg px-4">Book Now</a>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="/images/hero-salon.jpg" alt="Salon Interior" class="img-fluid rounded-4 shadow-lg hero-img" style="max-width: 420px;">
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Features Section -->
-<div class="container py-5">
-    <div class="section-header">
-        <h1>Why Choose Us</h1>
-        <p>We combine traditional craftsmanship with modern techniques to deliver exceptional results</p>
-    </div>
-    
-    <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center service-card">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-star fa-3x text-warning"></i>
+<!-- Intro Section -->
+<section class="home-intro py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Your Beauty Journey Starts Here</h2>
+                <p class="mb-4">At BeautyStudio, we believe every person deserves to feel confident and beautiful. Our team of skilled professionals uses the latest techniques and premium products to deliver exceptional results.<br><br>Whether you're looking for a fresh new hairstyle, rejuvenating facial treatment, or complete makeover, we're here to make your beauty dreams come true.</p>
+                <div class="d-flex gap-4 mt-4">
+                    <div>
+                        <div class="h3 fw-bold mb-0">500+</div>
+                        <div class="text-muted small">Happy Clients</div>
                     </div>
-                    <h4 class="card-title">Expert Team</h4>
-                    <p class="card-text">Our certified professionals have years of experience and stay updated with the latest trends and techniques.</p>
+                    <div>
+                        <div class="h3 fw-bold mb-0">5+</div>
+                        <div class="text-muted small">Years Experience</div>
+                    </div>
+                    <div>
+                        <div class="h3 fw-bold mb-0">15+</div>
+                        <div class="text-muted small">Services</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center service-card">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-clock fa-3x text-primary"></i>
-                    </div>
-                    <h4 class="card-title">Flexible Hours</h4>
-                    <p class="card-text">We offer convenient hours including evenings and Saturdays to fit your busy schedule.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center service-card">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-shield-alt fa-3x text-success"></i>
-                    </div>
-                    <h4 class="card-title">Quality Guarantee</h4>
-                    <p class="card-text">We use only premium products and guarantee your satisfaction with every service.</p>
-                </div>
+            <div class="col-lg-6 text-center">
+                <img src="/images/beautician-client.jpg" alt="Beautician with Client" class="img-fluid rounded-4 shadow-lg" style="max-width: 350px;">
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Quick Links Section -->
-<div class="container py-5 bg-light rounded-4">
-    <div class="section-header">
-        <h1>Get Started</h1>
-        <p>Ready to transform your look? Choose your next step</p>
-    </div>
-    
-    <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-cut fa-3x text-primary"></i>
-                    </div>
-                    <h5 class="card-title">Our Services</h5>
-                    <p class="card-text">Explore our comprehensive range of professional hair and beauty services.</p>
-                    <a asp-controller="Services" asp-action="Index" class="btn btn-outline-primary">View Services</a>
+<!-- Quick Access -->
+<section class="home-quick-access py-5 bg-light">
+    <div class="container">
+        <h3 class="fw-bold text-center mb-4">Quick Access</h3>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="quick-card text-center p-4 rounded-3 h-100">
+                    <div class="mb-3"><i class="fas fa-scissors fa-2x"></i></div>
+                    <h5 class="fw-bold mb-2">Services</h5>
+                    <p class="text-muted mb-3">Explore our comprehensive range of beauty and wellness services</p>
+                    <a asp-controller="Services" asp-action="Index" class="stretched-link"></a>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-calendar-alt fa-3x text-primary"></i>
-                    </div>
-                    <h5 class="card-title">Book Appointment</h5>
-                    <p class="card-text">Schedule your next visit with our easy online booking system.</p>
-                    <a asp-controller="Booking" asp-action="Index" class="btn btn-outline-primary">Book Now</a>
+            <div class="col-md-4">
+                <div class="quick-card text-center p-4 rounded-3 h-100">
+                    <div class="mb-3"><i class="fas fa-calendar-alt fa-2x"></i></div>
+                    <h5 class="fw-bold mb-2">Booking</h5>
+                    <p class="text-muted mb-3">Schedule your appointment online with our easy booking system</p>
+                    <a asp-controller="Booking" asp-action="Index" class="stretched-link"></a>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="card h-100 text-center border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <div class="mb-4">
-                        <i class="fas fa-users fa-3x text-primary"></i>
-                    </div>
-                    <h5 class="card-title">Meet Our Team</h5>
-                    <p class="card-text">Get to know our talented professionals and their expertise.</p>
-                    <a asp-controller="Staff" asp-action="Index" class="btn btn-outline-primary">Our Team</a>
+            <div class="col-md-4">
+                <div class="quick-card text-center p-4 rounded-3 h-100">
+                    <div class="mb-3"><i class="fas fa-users fa-2x"></i></div>
+                    <h5 class="fw-bold mb-2">Our Team</h5>
+                    <p class="text-muted mb-3">Meet our talented professionals and beauty experts</p>
+                    <a asp-controller="Staff" asp-action="Index" class="stretched-link"></a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Call to Action -->
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-            <div class="card bg-gradient-primary text-white border-0">
-                <div class="card-body p-5">
-                    <h2 class="mb-3">Ready for Your Transformation?</h2>
-                    <p class="lead mb-4">Join hundreds of satisfied customers who trust us with their style</p>
-                    <a asp-controller="Booking" asp-action="Index" class="btn btn-light btn-lg px-5">
-                        <i class="fas fa-calendar-check me-2"></i>Book Your Appointment
-                    </a>
+<!-- Featured Services -->
+<section class="home-featured-services py-5">
+    <div class="container">
+        <h3 class="fw-bold text-center mb-4">Featured Services</h3>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="/images/services/hair-styling.jpg" class="card-img-top" alt="Hair Styling & Cut">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Hair Styling & Cut</h6>
+                        <p class="text-muted small mb-2">Expert hair cutting and styling for all hair types</p>
+                        <div class="fw-bold">$45+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="/images/services/facial-treatment.jpg" class="card-img-top" alt="Facial Treatment">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Facial Treatment</h6>
+                        <p class="text-muted small mb-2">Rejuvenating facial treatments for glowing skin</p>
+                        <div class="fw-bold">$65+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="/images/services/makeup.jpg" class="card-img-top" alt="Makeup Services">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Makeup Services</h6>
+                        <p class="text-muted small mb-2">Professional makeup for events and special occasions</p>
+                        <div class="fw-bold">$55+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="/images/services/nail-care.jpg" class="card-img-top" alt="Nail Care">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Nail Care</h6>
+                        <p class="text-muted small mb-2">Complete nail care including manicure and pedicure</p>
+                        <div class="fw-bold">$35+</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</section> 

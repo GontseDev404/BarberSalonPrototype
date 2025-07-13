@@ -478,3 +478,102 @@ body {
     border-radius: 0 0 20px 20px;
   }
 } 
+
+/* --- Home Page Custom Styles --- */
+.home-hero {
+  background: #f7f9fb;
+  border-radius: 0 0 2rem 2rem;
+}
+.home-hero .hero-img {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+  border-radius: 1.5rem;
+}
+.home-intro {
+  background: #fff;
+}
+.home-intro img {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+  border-radius: 1.5rem;
+}
+.home-intro .h3 {
+  color: #2c3e50;
+}
+.home-quick-access {
+  background: #f7f9fb;
+}
+.quick-card {
+  background: #e9ecef;
+  border: none;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+.quick-card:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.12);
+  transform: translateY(-4px) scale(1.03);
+  background: #f1f3f6;
+}
+.quick-card i {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+.home-featured-services {
+  background: #fff;
+}
+.home-featured-services .card {
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.home-featured-services .card:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.14);
+  transform: translateY(-4px) scale(1.03);
+}
+.home-featured-services .card-img-top {
+  border-radius: 1.25rem 1.25rem 0 0;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Footer (for future use if you update _Layout) */
+.footer {
+  background: #232a34;
+  color: #fff;
+  padding: 2.5rem 0 1.5rem 0;
+  font-size: 1rem;
+  border-top: none;
+}
+.footer a, .footer .text-muted {
+  color: #bfc9d1 !important;
+}
+.footer a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+.footer .social-icon {
+  color: #bfc9d1;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  transition: color 0.2s;
+}
+.footer .social-icon:hover {
+  color: #fff;
+}
+
+@media (max-width: 991.98px) {
+  .home-hero .display-4 {
+    font-size: 2.2rem;
+  }
+  .home-featured-services .card-img-top {
+    height: 140px;
+  }
+}
+@media (max-width: 767.98px) {
+  .home-hero, .home-intro, .home-featured-services, .home-quick-access {
+    padding: 2rem 0 !important;
+  }
+  .home-featured-services .card-img-top {
+    height: 110px;
+  }
+} 
