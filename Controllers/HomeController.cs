@@ -62,14 +62,14 @@ namespace BarberSalonPrototype.Controllers
             });
         }
 
-        public IActionResult NotFound()
+        public new IActionResult NotFound()
         {
             _logger.LogWarning("404 page accessed for URL: {Url}", HttpContext.Request.Path);
             return View("NotFound");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Contact(ContactMessage contactMessage)
+        public IActionResult Contact(ContactMessage contactMessage)
         {
             try
             {
