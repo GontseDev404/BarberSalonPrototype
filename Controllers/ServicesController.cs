@@ -15,14 +15,14 @@ namespace BarberSalonPrototype.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             try
             {
                 _logger.LogInformation("Loading services page");
                 
-                var allServices = await _serviceService.GetAllServicesAsync();
-                var categories = await _serviceService.GetServiceCategoriesAsync();
+                var allServices = _serviceService.GetAllServicesAsync().Result;
+                var categories = _serviceService.GetServiceCategoriesAsync().Result;
                 
                 var viewModel = new ServicesViewModel
                 {

@@ -29,7 +29,7 @@ namespace BarberSalonPrototype.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendMessage(ContactMessage contactMessage)
+        public IActionResult SendMessage(ContactMessage contactMessage)
         {
             try
             {
