@@ -111,6 +111,9 @@ BarberSalonPrototype/
    ```
 4. Open your browser and navigate to `https://localhost:5001` or `http://localhost:5000`
 
+
+dotnet run --urls="https://localhost:5001"
+
 ### Navigation
 - **Home**: Welcome page with link to team
 - **Our Team**: Staff listing page (`/Staff/Index`)
