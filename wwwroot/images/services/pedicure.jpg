@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#f5f5f5"/>
+  <rect x="10" y="10" width="280" height="180" fill="white" stroke="#ddd" stroke-width="2"/>
+  <text x="150" y="85" text-anchor="middle" font-family="Outfit, sans-serif" font-size="18" font-weight="600" fill="#333">Pedicure</text>
+  <text x="150" y="105" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" fill="#999">Foot Care & Polish</text>
+  <!-- Foot silhouette -->
+  <ellipse cx="140" cy="140" rx="20" ry="12" fill="none" stroke="#ddd" stroke-width="3"/>
+  <!-- Toes with nail polish -->
+  <circle cx="125" cy="135" r="3" fill="#ff69b4"/>
+  <circle cx="132" cy="132" r="3" fill="#ff69b4"/>
+  <circle cx="140" cy="130" r="3" fill="#ff69b4"/>
+  <circle cx="148" cy="132" r="3" fill="#ff69b4"/>
+  <circle cx="155" cy="135" r="3" fill="#ff69b4"/>
+  <!-- Spa bowl -->
+  <ellipse cx="200" cy="145" rx="25" ry="8" fill="#e6f3ff"/>
+  <ellipse cx="200" cy="143" rx="20" ry="6" fill="#b3d9ff"/>
+  <!-- Bubbles -->
+  <circle cx="195" cy="140" r="2" fill="#87ceeb" opacity="0.6"/>
+  <circle cx="205" cy="138" r="1.5" fill="#87ceeb" opacity="0.6"/>
+  <circle cx="190" cy="135" r="1" fill="#87ceeb" opacity="0.6"/>
+</svg>
