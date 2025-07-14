@@ -15,33 +15,17 @@ namespace BarberSalonPrototype.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             try
             {
                 _logger.LogInformation("Loading gallery page");
-                
-                var allStaff = await _staffService.GetAllStaffAsync();
-                var allImages = new List<GalleryImage>();
-                
-                foreach (var staff in allStaff)
-                {
-                    allImages.AddRange(staff.Gallery);
-                }
-                
-                var viewModel = new GalleryViewModel
-                {
-                    AllImages = allImages.OrderByDescending(i => i.UploadDate).ToList(),
-                    FeaturedImages = allImages.Where(i => i.IsFeatured).OrderBy(i => i.SortOrder).ToList(),
-                    StaffMembers = allStaff.ToList()
-                };
-
-                return View(viewModel);
+                return View();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error loading gallery page");
-                return RedirectToAction("Error", "Home");
+                _logger.LogError(ex, "Error loading gallery page: {Message}", ex.Message);
+                return View();
             }
         }
 
@@ -60,7 +44,7 @@ namespace BarberSalonPrototype.Controllers
 
                 var gallery = await _staffService.GetStaffGalleryAsync(staffId);
                 
-                var viewModel = new StaffGalleryViewModel
+                var viewModel = new BarberSalonPrototype.Models.StaffGalleryViewModel
                 {
                     StaffMember = staffMember,
                     Gallery = gallery.ToList()
@@ -130,12 +114,5 @@ namespace BarberSalonPrototype.Controllers
                 return Json(new { success = false, message = "Error retrieving featured images" });
             }
         }
-    }
-
-    public class GalleryViewModel
-    {
-        public List<GalleryImage> AllImages { get; set; } = new List<GalleryImage>();
-        public List<GalleryImage> FeaturedImages { get; set; } = new List<GalleryImage>();
-        public List<StaffMember> StaffMembers { get; set; } = new List<StaffMember>();
     }
 } 

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f5f5f5"/>
+  <rect x="15" y="15" width="370" height="270" fill="white" stroke="#ddd" stroke-width="2"/>
+  <circle cx="200" cy="120" r="40" fill="#e9ecef" stroke="#999" stroke-width="2"/>
+  <path d="M160 100 Q170 80 180 100" stroke="#8b4513" stroke-width="3" fill="none"/>
+  <path d="M180 100 Q190 85 200 100" stroke="#daa520" stroke-width="3" fill="none"/>
+  <path d="M200 100 Q210 85 220 100" stroke="#cd853f" stroke-width="3" fill="none"/>
+  <path d="M220 100 Q230 80 240 100" stroke="#f4a460" stroke-width="3" fill="none"/>
+  <text x="200" y="220" text-anchor="middle" font-family="Outfit, sans-serif" font-size="18" font-weight="600" fill="#333">Balayage Highlights</text>
+  <text x="200" y="245" text-anchor="middle" font-family="Outfit, sans-serif" font-size="14" fill="#666">by Sarah Johnson</text>
+  <text x="200" y="265" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" fill="#999">Hair Stylist Work</text>
+</svg>

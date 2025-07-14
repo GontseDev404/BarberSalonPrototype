@@ -142,9 +142,4 @@ namespace BarberSalonPrototype.Controllers
         }
     }
 
-    public class StaffGalleryViewModel
-    {
-        public StaffMember StaffMember { get; set; } = new StaffMember();
-        public List<GalleryImage> Gallery { get; set; } = new List<GalleryImage>();
-    }
 } 
