@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  <rect x="10" y="10" width="280" height="180" fill="#e9ecef" stroke="#6c757d" stroke-width="2"/>
+  <text x="150" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#495057">Nail Care</text>
+  <text x="150" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6c757d">Manicure & Pedicure</text>
+  <!-- Hand silhouette -->
+  <ellipse cx="120" cy="140" rx="12" ry="20" fill="none" stroke="#fd7e14" stroke-width="3"/>
+  <!-- Fingers/nails -->
+  <rect x="114" y="120" width="3" height="8" fill="#dc3545" rx="1"/>
+  <rect x="118" y="115" width="3" height="10" fill="#dc3545" rx="1"/>
+  <rect x="122" y="118" width="3" height="9" fill="#dc3545" rx="1"/>
+  <rect x="126" y="120" width="3" height="8" fill="#dc3545" rx="1"/>
+  <!-- Nail polish bottle -->
+  <rect x="180" y="130" width="15" height="25" fill="#20c997"/>
+  <rect x="185" y="125" width="5" height="8" fill="#17a2b8"/>
+  <circle cx="187" cy="120" r="2" fill="#17a2b8"/>
+</svg>
