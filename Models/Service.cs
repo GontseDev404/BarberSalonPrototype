@@ -25,7 +25,7 @@ namespace BarberSalonPrototype.Models
         public int DurationMinutes { get; set; } = 60;
 
         [Display(Name = "Category")]
-        public ServiceCategory Category { get; set; } = ServiceCategory.Haircut;
+        public ServiceCategory Category { get; set; } = ServiceCategory.HairServicesMen;
 
         [Display(Name = "Is Popular")]
         public bool IsPopular { get; set; } = false;
