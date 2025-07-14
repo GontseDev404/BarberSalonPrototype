@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -44,10 +46,8 @@ body {
   --transition: all 0.3s ease;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: var(--text-dark);
+html, body {
+  font-family: 'Outfit', sans-serif !important;
 }
 
 /* Navigation */
@@ -576,4 +576,202 @@ body {
   .home-featured-services .card-img-top {
     height: 110px;
   }
+} 
+
+/* --- NAVBAR --- */
+.navbar {
+  background: #fff !important;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #222 !important;
+  letter-spacing: 0.5px;
+  gap: 0.5rem;
+}
+.navbar-nav .nav-link {
+  color: #222 !important;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
+  background: #f2f4f8;
+  color: #2c3e50 !important;
+}
+
+/* --- HERO BANNER --- */
+.hero-banner {
+  background: linear-gradient(120deg, #2c3e50 0%, #5a6a7a 100%);
+  border-radius: 0 0 0 0;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.hero-banner h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.hero-banner .lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+.hero-banner .btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+
+/* --- WELCOME SECTION --- */
+.welcome-section {
+  background: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.welcome-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+.welcome-section p {
+  font-size: 1.08rem;
+  color: #555;
+}
+.welcome-section .fa-check-circle {
+  color: #28a745;
+  font-size: 1.1rem;
+}
+
+/* --- QUICK ACCESS --- */
+.quick-access-section {
+  background: #f8f9fa;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.quick-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 220px;
+  position: relative;
+}
+.quick-card:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  transform: translateY(-4px) scale(1.02);
+}
+.quick-card .fa {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+.quick-card .stretched-link {
+  color: #3498db;
+  font-weight: 600;
+  text-decoration: none;
+  position: absolute;
+  left: 0; right: 0; bottom: 0; top: 0;
+  opacity: 0;
+}
+.quick-card .fw-semibold {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* --- FEATURED SERVICES --- */
+.featured-services-section {
+  background: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.featured-services-section .card {
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+  border: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.featured-services-section .card:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  transform: translateY(-4px) scale(1.02);
+}
+.featured-services-section .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+.featured-services-section .card-body {
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+}
+.featured-services-section .fw-bold {
+  color: #2c3e50;
+}
+
+/* --- FOOTER --- */
+.footer-main {
+  background: #23272b !important;
+  color: #f8f9fa;
+  font-size: 1rem;
+}
+.footer-main h6 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.footer-main ul {
+  padding-left: 0;
+  list-style: none;
+}
+.footer-main .footer-link {
+  color: #bfc9d1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-main .footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.footer-main .footer-social {
+  color: #bfc9d1;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  transition: color 0.2s;
+}
+.footer-main .footer-social:hover {
+  color: #fff;
+}
+.footer-main .fa {
+  min-width: 1.2em;
+  text-align: center;
+}
+.footer-main .small {
+  color: #bfc9d1;
+}
+
+/* --- GENERAL --- */
+body {
+  font-family: 'Outfit', sans-serif !important;
+  background: #f8f9fa;
+  color: #222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700;
+  color: #222;
+}
+
+.text-secondary {
+  color: #555 !important;
 } 

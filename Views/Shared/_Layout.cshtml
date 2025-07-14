@@ -3,62 +3,91 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="BarberSalon - Professional Barber Services" />
+    <meta name="description" content="Groom & Glow - Premium Grooming Experience" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>@ViewData["Title"] - BarberSalonPrototype</title>
+    <title>@ViewData["Title"] - Groom & Glow</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BarberSalon</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-scissors fa-lg" style="color:#222;"></i>
+                    <span class="fw-bold fs-4" style="color:#222;">Groom & Glow</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Services" asp-action="Index">Services</a>
+                            <a class="nav-link" asp-area="" asp-controller="Services" asp-action="Index">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Booking" asp-action="Index">Booking</a>
+                            <a class="nav-link" asp-area="" asp-controller="Booking" asp-action="Index">Booking</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Gallery" asp-action="Index">Gallery</a>
+                            <a class="nav-link" asp-area="" asp-controller="Gallery" asp-action="Index">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
+                            <a class="nav-link" asp-area="" asp-controller="Staff" asp-action="Index">Our Team</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                            <a class="nav-link" asp-area="" asp-controller="About" asp-action="Index">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Staff" asp-action="Index">Our Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <main>
+        @RenderBody()
+    </main>
+    <footer class="footer-main bg-dark text-light pt-5 pb-3 mt-5">
         <div class="container">
-            &copy; 2024 - BarberSalonPrototype - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <ul class="list-unstyled small mb-2">
+                        <li><i class="fa fa-map-marker-alt me-2"></i>123 Rivonia Road, Sandton, Johannesburg</li>
+                        <li><i class="fa fa-phone me-2"></i>+27 11 234 5678</li>
+                        <li><i class="fa fa-envelope me-2"></i>info@groomandglow.co.za</li>
+                        <li><i class="fa fa-clock me-2"></i>Mon-Sat: 8AM-6PM</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled small mb-2">
+                        <li><a class="footer-link" asp-controller="Services" asp-action="Index">Services</a></li>
+                        <li><a class="footer-link" asp-controller="Booking" asp-action="Index">Booking</a></li>
+                        <li><a class="footer-link" asp-controller="Gallery" asp-action="Index">Gallery</a></li>
+                        <li><a class="footer-link" asp-controller="Staff" asp-action="Index">Our Team</a></li>
+                        <li><a class="footer-link" asp-controller="About" asp-action="Index">About Us</a></li>
+                        <li><a class="footer-link" asp-controller="Contact" asp-action="Index">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-3">Follow Us</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-social"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="footer-social"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center small mt-4">
+                &copy; 2025 Groom & Glow. All rights reserved.
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/jquery.min.js"></script>

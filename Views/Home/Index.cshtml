@@ -3,77 +3,60 @@
 }
 
 <!-- Hero Section -->
-<section class="home-hero py-5 bg-light">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                <h1 class="display-4 fw-bold mb-3">Transform Your Beauty</h1>
-                <p class="lead mb-4">Experience premium beauty services with our expert team. From hair styling to skincare treatments, we bring out your natural radiance.</p>
-                <a asp-controller="Booking" asp-action="Index" class="btn btn-dark btn-lg px-4">Book Now</a>
-            </div>
-            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="/images/hero-salon.jpg" alt="Salon Interior" class="img-fluid rounded-4 shadow-lg hero-img" style="max-width: 420px;">
-            </div>
-        </div>
+<section class="hero-banner text-white text-center d-flex flex-column justify-content-center align-items-center">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold mb-3">Premium Grooming Experience</h1>
+        <p class="lead mb-4">Transform your look with our expert barbers and stylists in the heart of Sandton</p>
+        <a asp-controller="Booking" asp-action="Index" class="btn btn-light btn-lg px-5 py-2 mt-2">Book Now</a>
     </div>
 </section>
 
-<!-- Intro Section -->
-<section class="home-intro py-5">
+<!-- Welcome Section -->
+<section class="welcome-section bg-white py-5">
     <div class="container">
         <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <h2 class="fw-bold mb-3">Your Beauty Journey Starts Here</h2>
-                <p class="mb-4">At BeautyStudio, we believe every person deserves to feel confident and beautiful. Our team of skilled professionals uses the latest techniques and premium products to deliver exceptional results.<br><br>Whether you're looking for a fresh new hairstyle, rejuvenating facial treatment, or complete makeover, we're here to make your beauty dreams come true.</p>
-                <div class="d-flex gap-4 mt-4">
-                    <div>
-                        <div class="h3 fw-bold mb-0">500+</div>
-                        <div class="text-muted small">Happy Clients</div>
-                    </div>
-                    <div>
-                        <div class="h3 fw-bold mb-0">5+</div>
-                        <div class="text-muted small">Years Experience</div>
-                    </div>
-                    <div>
-                        <div class="h3 fw-bold mb-0">15+</div>
-                        <div class="text-muted small">Services</div>
-                    </div>
+            <div class="col-lg-7">
+                <h2 class="fw-bold mb-3">Welcome to Groom & Glow</h2>
+                <p class="mb-4 text-secondary">Located in the prestigious Sandton district, Groom & Glow offers the finest grooming services in South Africa. Our skilled team combines traditional barbering techniques with modern styling to deliver exceptional results.<br><br>From classic cuts to contemporary styles, beard grooming to luxury treatments, we provide a complete grooming experience that leaves you looking and feeling your absolute best.</p>
+                <div class="d-flex gap-4 mt-3">
+                    <span class="text-success"><i class="fa fa-check-circle me-2"></i>Expert Stylists</span>
+                    <span class="text-success"><i class="fa fa-check-circle me-2"></i>Premium Products</span>
                 </div>
             </div>
-            <div class="col-lg-6 text-center">
-                <img src="/images/beautician-client.jpg" alt="Beautician with Client" class="img-fluid rounded-4 shadow-lg" style="max-width: 350px;">
+            <div class="col-lg-5 text-center">
+                <img src="/images/salon-interior.jpg" alt="Salon Interior" class="img-fluid rounded-3 shadow" style="max-width: 400px;">
             </div>
         </div>
     </div>
 </section>
 
 <!-- Quick Access -->
-<section class="home-quick-access py-5 bg-light">
+<section class="quick-access-section py-5 bg-light">
     <div class="container">
         <h3 class="fw-bold text-center mb-4">Quick Access</h3>
         <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-                <div class="quick-card text-center p-4 rounded-3 h-100">
-                    <div class="mb-3"><i class="fas fa-scissors fa-2x"></i></div>
+                <div class="quick-card text-center p-4 rounded-3 h-100 bg-white shadow-sm">
+                    <div class="mb-3"><i class="fa fa-scissors fa-2x"></i></div>
                     <h5 class="fw-bold mb-2">Services</h5>
-                    <p class="text-muted mb-3">Explore our comprehensive range of beauty and wellness services</p>
-                    <a asp-controller="Services" asp-action="Index" class="stretched-link"></a>
+                    <p class="text-muted mb-3">Explore our full range of grooming services</p>
+                    <a asp-controller="Services" asp-action="Index" class="stretched-link fw-semibold">Learn More</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="quick-card text-center p-4 rounded-3 h-100">
-                    <div class="mb-3"><i class="fas fa-calendar-alt fa-2x"></i></div>
+                <div class="quick-card text-center p-4 rounded-3 h-100 bg-white shadow-sm">
+                    <div class="mb-3"><i class="fa fa-calendar-alt fa-2x"></i></div>
                     <h5 class="fw-bold mb-2">Booking</h5>
-                    <p class="text-muted mb-3">Schedule your appointment online with our easy booking system</p>
-                    <a asp-controller="Booking" asp-action="Index" class="stretched-link"></a>
+                    <p class="text-muted mb-3">Schedule your appointment online</p>
+                    <a asp-controller="Booking" asp-action="Index" class="stretched-link fw-semibold">Book Now</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="quick-card text-center p-4 rounded-3 h-100">
-                    <div class="mb-3"><i class="fas fa-users fa-2x"></i></div>
+                <div class="quick-card text-center p-4 rounded-3 h-100 bg-white shadow-sm">
+                    <div class="mb-3"><i class="fa fa-users fa-2x"></i></div>
                     <h5 class="fw-bold mb-2">Our Team</h5>
-                    <p class="text-muted mb-3">Meet our talented professionals and beauty experts</p>
-                    <a asp-controller="Staff" asp-action="Index" class="stretched-link"></a>
+                    <p class="text-muted mb-3">Meet our skilled professionals</p>
+                    <a asp-controller="Staff" asp-action="Index" class="stretched-link fw-semibold">View Team</a>
                 </div>
             </div>
         </div>
@@ -81,47 +64,57 @@
 </section>
 
 <!-- Featured Services -->
-<section class="home-featured-services py-5">
+<section class="featured-services-section py-5">
     <div class="container">
         <h3 class="fw-bold text-center mb-4">Featured Services</h3>
         <div class="row g-4 justify-content-center">
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm border-0">
-                    <img src="/images/services/hair-styling.jpg" class="card-img-top" alt="Hair Styling & Cut">
+                    <img src="/images/services/classic-haircut.jpg" class="card-img-top" alt="Classic Haircut">
                     <div class="card-body">
-                        <h6 class="fw-bold">Hair Styling & Cut</h6>
-                        <p class="text-muted small mb-2">Expert hair cutting and styling for all hair types</p>
-                        <div class="fw-bold">$45+</div>
+                        <h6 class="fw-bold">Classic Haircut</h6>
+                        <p class="text-muted small mb-2">Precision cuts tailored to your style</p>
+                        <div class="fw-bold">R180</div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm border-0">
-                    <img src="/images/services/facial-treatment.jpg" class="card-img-top" alt="Facial Treatment">
+                    <img src="/images/services/beard-grooming.jpg" class="card-img-top" alt="Beard Grooming">
                     <div class="card-body">
-                        <h6 class="fw-bold">Facial Treatment</h6>
-                        <p class="text-muted small mb-2">Rejuvenating facial treatments for glowing skin</p>
-                        <div class="fw-bold">$65+</div>
+                        <h6 class="fw-bold">Beard Grooming</h6>
+                        <p class="text-muted small mb-2">Expert beard shaping and styling</p>
+                        <div class="fw-bold">R120</div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm border-0">
-                    <img src="/images/services/makeup.jpg" class="card-img-top" alt="Makeup Services">
+                    <img src="/images/services/hot-towel-shave.jpg" class="card-img-top" alt="Hot Towel Shave">
                     <div class="card-body">
-                        <h6 class="fw-bold">Makeup Services</h6>
-                        <p class="text-muted small mb-2">Professional makeup for events and special occasions</p>
-                        <div class="fw-bold">$55+</div>
+                        <h6 class="fw-bold">Hot Towel Shave</h6>
+                        <p class="text-muted small mb-2">Traditional luxury shaving experience</p>
+                        <div class="fw-bold">R150</div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm border-0">
-                    <img src="/images/services/nail-care.jpg" class="card-img-top" alt="Nail Care">
+                    <img src="/images/services/hair-styling.jpg" class="card-img-top" alt="Hair Styling">
                     <div class="card-body">
-                        <h6 class="fw-bold">Nail Care</h6>
-                        <p class="text-muted small mb-2">Complete nail care including manicure and pedicure</p>
-                        <div class="fw-bold">$35+</div>
+                        <h6 class="fw-bold">Hair Styling</h6>
+                        <p class="text-muted small mb-2">Modern styles and treatments</p>
+                        <div class="fw-bold">R200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="/images/services/nail-technician.jpg" class="card-img-top" alt="Nail Technician">
+                    <div class="card-body">
+                        <h6 class="fw-bold">Nail Technician</h6>
+                        <p class="text-muted small mb-2">Professional nail care and art</p>
+                        <div class="fw-bold">R160</div>
                     </div>
                 </div>
             </div>
