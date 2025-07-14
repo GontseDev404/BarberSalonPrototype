@@ -8,8 +8,8 @@
 <section class="hero-section">
     <div class="container">
         <div class="text-center">
-            <h1 class="hero-title">Our Services</h1>
-            <p class="hero-subtitle">Professional grooming and beauty services tailored for you</p>
+            <h1 class="hero-title">Hair and Nail Studio – Services List</h1>
+            <p class="hero-subtitle">Professional services for men and women</p>
         </div>
     </div>
 </section>
@@ -25,32 +25,86 @@
                     @foreach (var category in Model.Categories)
                     {
                         <option value="@category" selected="@(Model.SelectedCategory == category)">
-                            @category.ToString().Replace("_", " ")
+                            @switch (category)
+                            {
+                                case ServiceCategory.HairServicesMen:
+                                    <text>💇‍♂️ Hair Services - Men</text>
+                                    break;
+                                case ServiceCategory.HairServicesWomen:
+                                    <text>💇‍♀️ Hair Services - Women</text>
+                                    break;
+                                case ServiceCategory.NailServices:
+                                    <text>💅 Nail Services</text>
+                                    break;
+                                case ServiceCategory.SkinBeautyServices:
+                                    <text>🧖‍♀️ Skin & Beauty Services</text>
+                                    break;
+                                case ServiceCategory.AddonsExtras:
+                                    <text>🧴 Add-ons & Extras</text>
+                                    break;
+                            }
                         </option>
                     }
                 </select>
             </div>
         </div>
 
-        <!-- Services Grid -->
-        <div class="row g-4">
-            @foreach (var service in Model.Services)
-            {
-                <div class="col-lg-4 col-md-6 col-sm-12 service-item" data-category="@service.Category">
-                    <div class="service-card">
-                        <img src="@service.ImageUrl" alt="@service.Name" class="img-fluid">
-                        <div class="service-card-body">
-                            <h5 class="service-title">@service.Name</h5>
-                            <p class="service-description">@service.Description</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="service-price">@service.Price</span>
-                                <a href="@Url.Action("Index", "Booking")" class="btn btn-outline-primary btn-sm">Book Now</a>
+        @{
+            var servicesByCategory = Model.Services.GroupBy(s => s.Category).OrderBy(g => g.Key);
+        }
+
+        @foreach (var categoryGroup in servicesByCategory)
+        {
+            <div class="category-section mb-5" data-category="@categoryGroup.Key">
+                <!-- Category Header -->
+                <div class="category-header mb-4">
+                    <h2 class="category-title">
+                        @switch (categoryGroup.Key)
+                        {
+                            case ServiceCategory.HairServicesMen:
+                                <span>💇‍♂️ Hair Services – Men</span>
+                                break;
+                            case ServiceCategory.HairServicesWomen:
+                                <span>💇‍♀️ Hair Services – Women</span>
+                                break;
+                            case ServiceCategory.NailServices:
+                                <span>💅 Nail Services</span>
+                                break;
+                            case ServiceCategory.SkinBeautyServices:
+                                <span>🧖‍♀️ Skin & Beauty Services</span>
+                                break;
+                            case ServiceCategory.AddonsExtras:
+                                <span>🧴 Add-ons & Extras</span>
+                                break;
+                        }
+                    </h2>
+                    <hr class="category-divider">
+                </div>
+
+                <!-- Services Grid for this category -->
+                <div class="row g-4">
+                    @foreach (var service in categoryGroup.OrderBy(s => s.SortOrder))
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-12 service-item" data-category="@service.Category">
+                            <div class="service-card">
+                                <img src="@service.ImageUrl" alt="@service.Name" class="img-fluid">
+                                <div class="service-card-body">
+                                    <h5 class="service-title">@service.Name</h5>
+                                    <p class="service-description">@service.Description</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="service-price">@service.Price</span>
+                                        <div class="service-actions">
+                                            <span class="service-duration">@service.DurationMinutes min</span>
+                                            <a href="@Url.Action("Index", "Booking")" class="btn btn-outline-primary btn-sm ms-2">Book</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
-            }
-        </div>
+            </div>
+        }
 
         @if (!Model.Services.Any())
         {
@@ -68,20 +122,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const categoryFilter = document.getElementById('categoryFilter');
-            const serviceItems = document.querySelectorAll('.service-item');
+            const categorySection = document.querySelectorAll('.category-section');
 
             categoryFilter.addEventListener('change', function() {
                 const selectedCategory = this.value;
                 
-                serviceItems.forEach(function(item) {
-                    const itemCategory = item.getAttribute('data-category');
+                categorySection.forEach(function(section) {
+                    const sectionCategory = section.getAttribute('data-category');
                     
-                    if (selectedCategory === '' || itemCategory === selectedCategory) {
-                        item.style.display = 'block';
-                        item.classList.add('fade-in');
+                    if (selectedCategory === '' || sectionCategory === selectedCategory) {
+                        section.style.display = 'block';
+                        section.classList.add('fade-in');
                     } else {
-                        item.style.display = 'none';
-                        item.classList.remove('fade-in');
+                        section.style.display = 'none';
+                        section.classList.remove('fade-in');
                     }
                 });
             });

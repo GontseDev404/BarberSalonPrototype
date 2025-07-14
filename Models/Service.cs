@@ -40,17 +40,15 @@ namespace BarberSalonPrototype.Models
 
     public enum ServiceCategory
     {
-        [Display(Name = "Haircut")]
-        Haircut,
-        [Display(Name = "Beard & Grooming")]
-        BeardGrooming,
-        [Display(Name = "Hair Treatment")]
-        HairTreatment,
-        [Display(Name = "Nail Care")]
-        NailCare,
-        [Display(Name = "Facial & Skincare")]
-        FacialSkincare,
-        [Display(Name = "Styling")]
-        Styling
+        [Display(Name = "Hair Services - Men")]
+        HairServicesMen,
+        [Display(Name = "Hair Services - Women")]
+        HairServicesWomen,
+        [Display(Name = "Nail Services")]
+        NailServices,
+        [Display(Name = "Skin & Beauty Services")]
+        SkinBeautyServices,
+        [Display(Name = "Add-ons & Extras")]
+        AddonsExtras
     }
 } 
