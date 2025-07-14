@@ -1,37 +1,119 @@
-@model IEnumerable<object>
-
 @{
     ViewData["Title"] = "Gallery";
 }
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-center mb-5">Our Gallery</h1>
-            <p class="text-center text-muted mb-5">Take a look at our work and salon environment.</p>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="hero-title">Our Gallery</h1>
+            <p class="hero-subtitle">Showcase of our professional work and salon environment</p>
         </div>
     </div>
+</section>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        @foreach (dynamic image in Model)
-        {
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="@image.ImageUrl" class="card-img-top" alt="@image.Title" style="height: 250px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">@image.Title</h5>
-                        <p class="card-text">@image.Description</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0">
-                        <button class="btn btn-outline-primary btn-sm w-100" onclick="openImageModal('@image.ImageUrl', '@image.Title')">
-                            <i class="fas fa-expand me-2"></i>View Larger
-                        </button>
+<!-- Gallery Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/gallery/michael-1.jpg" alt="Classic Pompadour" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Classic Pompadour</h5>
+                        <p class="service-description">Professional men's styling by our expert barbers</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Recent Work</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/gallery/michael-1.jpg', 'Classic Pompadour')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        }
+            
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/gallery/sarah-1.jpg" alt="Balayage Highlights" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Balayage Highlights</h5>
+                        <p class="service-description">Beautiful color work by our talented hair stylists</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Recent Work</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/gallery/sarah-1.jpg', 'Balayage Highlights')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/gallery/emily-1.jpg" alt="Floral Nail Art" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Floral Nail Art</h5>
+                        <p class="service-description">Intricate nail designs that showcase artistic skill</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Recent Work</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/gallery/emily-1.jpg', 'Floral Nail Art')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/services/taper-fade.jpg" alt="Taper Fade" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Taper Fade</h5>
+                        <p class="service-description">Clean and sharp cuts that define modern styling</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Service Sample</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/services/taper-fade.jpg', 'Taper Fade')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/services/manicure.jpg" alt="Professional Manicure" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Professional Manicure</h5>
+                        <p class="service-description">Complete nail care for beautiful hands</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Service Sample</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/services/manicure.jpg', 'Professional Manicure')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <img src="/images/services/deep-clean-facial.jpg" alt="Deep Clean Facial" class="img-fluid">
+                    <div class="service-card-body">
+                        <h5 class="service-title">Deep Clean Facial</h5>
+                        <p class="service-description">Professional skin care for a healthy glow</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="service-duration">Service Sample</span>
+                            <button class="btn btn-outline-primary btn-sm" onclick="openImageModal('/images/services/deep-clean-facial.jpg', 'Deep Clean Facial')">
+                                <i class="fas fa-expand me-1"></i>View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -48,37 +130,11 @@
     </div>
 </div>
 
-<style>
-    .card {
-        transition: transform 0.2s ease-in-out;
-        border: none;
-        border-radius: 15px;
-        overflow: hidden;
-    }
-    
-    .card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .card-img-top {
-        transition: filter 0.2s ease-in-out;
-    }
-    
-    .card:hover .card-img-top {
-        filter: brightness(1.1);
-    }
-    
-    .modal-content {
-        border-radius: 15px;
-        border: none;
-    }
-</style>
-
 <script>
-    function openImageModal(imageUrl, title) {
-        document.getElementById('modalImage').src = imageUrl;
-        document.getElementById('imageModalLabel').textContent = title;
-        var modal = new bootstrap.Modal(document.getElementById('imageModal'));
-        modal.show();
-    }
+function openImageModal(imageUrl, caption) {
+    document.getElementById('imageModalLabel').textContent = caption;
+    document.getElementById('modalImage').src = imageUrl;
+    document.getElementById('modalImage').alt = caption;
+    new bootstrap.Modal(document.getElementById('imageModal')).show();
+}
 </script> 
