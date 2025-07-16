@@ -467,3 +467,60 @@ footer a:hover {
     width: 150px;
   }
 } 
+
+/* Button Hover Effects */
+.btn, .btn-primary, .btn-outline-primary, .hero-book-btn {
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.btn:hover, .btn:focus,
+.btn-primary:hover, .btn-primary:focus,
+.btn-outline-primary:hover, .btn-outline-primary:focus,
+.hero-book-btn:hover, .hero-book-btn:focus {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(31,41,55,0.12);
+}
+
+/* Card Hover Effects */
+.card, .quick-card, .service-card {
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.card:hover, .quick-card:hover, .service-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(31,41,55,0.13);
+}
+
+/* Image Hover Zoom */
+.card-img-top, .img-fluid, .gallery-image {
+  transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+}
+.card-img-top:hover, .img-fluid:hover, .gallery-image:hover {
+  transform: scale(1.06);
+}
+
+/* Social Icon Hover */
+.social-icons a {
+  transition: color 0.3s, transform 0.2s;
+}
+.social-icons a:hover {
+  transform: scale(1.18) rotate(-6deg);
+}
+
+/* Footer Link Hover */
+footer a {
+  transition: color 0.3s, text-decoration 0.3s, transform 0.2s;
+}
+footer a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+/* Section Fade-in Animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.4,2,.6,1);
+}
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+} 
