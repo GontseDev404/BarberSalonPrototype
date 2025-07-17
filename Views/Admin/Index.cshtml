@@ -1,253 +1,55 @@
-@model BarberSalonPrototype.Controllers.AdminDashboardViewModel
 @{
     ViewData["Title"] = "Admin Dashboard";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                <div class="text-muted">
-                    <i class="fas fa-clock me-1"></i>
-                    Last updated: @DateTime.Now.ToString("MMM dd, yyyy HH:mm")
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Statistics Cards Row -->
-    <div class="row">
-        <!-- Total Bookings Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Bookings
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalBookings</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Today's Bookings Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Today's Bookings
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TodayBookings</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pending Bookings Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Bookings
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.PendingBookings</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Total Users Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Total Users
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalUsers</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-        <!-- Recent Bookings -->
-        <div class="col-lg-8 mb-4">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
             <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Recent Bookings</h6>
-                    <a asp-action="Bookings" class="btn btn-sm btn-primary">View All</a>
-                </div>
-                <div class="card-body">
-                    @if (Model.RecentBookings.Any())
-                    {
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Customer</th>
-                                        <th>Service</th>
-                                        <th>Staff</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var booking in Model.RecentBookings)
-                                    {
-                                        <tr>
-                                            <td>@booking.FullName</td>
-                                            <td>@booking.Service?.Name</td>
-                                            <td>@booking.StaffMember?.FullName</td>
-                                            <td>@booking.AppointmentDate.ToString("MMM dd, yyyy")</td>
-                                            <td>
-                                                <span class="badge badge-@(booking.Status switch 
-                                                { 
-                                                    BookingStatus.Pending => "warning",
-                                                    BookingStatus.Confirmed => "success", 
-                                                    BookingStatus.Completed => "info",
-                                                    BookingStatus.Cancelled => "danger",
-                                                    _ => "secondary" 
-                                                })">
-                                                    @booking.Status
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                <div class="card-body py-5">
+                    <i class="fas fa-cog fa-4x text-primary mb-4"></i>
+                    <h1 class="display-4 mb-3">Admin Dashboard</h1>
+                    <p class="lead mb-4">Welcome, Admin! Use the links below to manage the application.</p>
+                    <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+                        <div class="col">
+                            <a asp-controller="Staff" asp-action="Index" class="card h-100 text-decoration-none text-dark shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-users fa-2x mb-2 text-primary"></i>
+                                    <h5 class="card-title">Manage Staff</h5>
+                                    <p class="card-text">View and edit staff members.</p>
+                                </div>
+                            </a>
                         </div>
-                    }
-                    else
-                    {
-                        <p class="text-muted">No recent bookings found.</p>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Stats -->
-        <div class="col-lg-4 mb-4">
-            <!-- Popular Services -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Popular Services</h6>
-                </div>
-                <div class="card-body">
-                    @if (Model.PopularServices.Any())
-                    {
-                        @foreach (var service in Model.PopularServices)
-                        {
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="me-3">
-                                    <i class="fas fa-scissors text-primary"></i>
+                        <div class="col">
+                            <a asp-controller="Services" asp-action="Index" class="card h-100 text-decoration-none text-dark shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-scissors fa-2x mb-2 text-success"></i>
+                                    <h5 class="card-title">Manage Services</h5>
+                                    <p class="card-text">View and edit salon services.</p>
                                 </div>
-                                <div class="flex-grow-1">
-                                    <div class="small font-weight-bold">@service.Name</div>
-                                    <div class="text-xs text-muted">@service.Price</div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a asp-controller="Booking" asp-action="Index" class="card h-100 text-decoration-none text-dark shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-calendar-check fa-2x mb-2 text-warning"></i>
+                                    <h5 class="card-title">Manage Bookings</h5>
+                                    <p class="card-text">View and manage appointments.</p>
                                 </div>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        <p class="text-muted small">No popular services found.</p>
-                    }
-                </div>
-            </div>
-
-            <!-- Recent Users -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Recent Users</h6>
-                </div>
-                <div class="card-body">
-                    @if (Model.RecentUsers.Any())
-                    {
-                        @foreach (var user in Model.RecentUsers)
-                        {
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="me-3">
-                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                        @(user.FirstName?.FirstOrDefault() ?? user.Email?.FirstOrDefault() ?? '?')
-                                    </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a asp-controller="Admin" asp-action="Users" class="card h-100 text-decoration-none text-dark shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-user-shield fa-2x mb-2 text-danger"></i>
+                                    <h5 class="card-title">Manage Users</h5>
+                                    <p class="card-text">View and manage user accounts.</p>
                                 </div>
-                                <div class="flex-grow-1">
-                                    <div class="small font-weight-bold">@user.DisplayName</div>
-                                    <div class="text-xs text-muted">@user.DateJoined.ToString("MMM dd, yyyy")</div>
-                                </div>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        <p class="text-muted small">No recent users found.</p>
-                    }
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.border-left-primary {
-    border-left: 0.25rem solid #4e73df !important;
-}
-.border-left-success {
-    border-left: 0.25rem solid #1cc88a !important;
-}
-.border-left-warning {
-    border-left: 0.25rem solid #f6c23e !important;
-}
-.border-left-info {
-    border-left: 0.25rem solid #36b9cc !important;
-}
-.text-gray-800 {
-    color: #5a5c69 !important;
-}
-.text-gray-300 {
-    color: #dddfeb !important;
-}
-.badge-warning {
-    background-color: #f6c23e;
-}
-.badge-success {
-    background-color: #1cc88a;
-}
-.badge-info {
-    background-color: #36b9cc;
-}
-.badge-danger {
-    background-color: #e74a3b;
-}
-.badge-secondary {
-    background-color: #858796;
-}
-</style>

@@ -15,6 +15,7 @@ namespace BarberSalonPrototype.Data
 
             // Seed admin user
             await SeedAdminUserAsync(userManager);
+            await SeedDemoUserAsync(userManager);
 
             // Check if we have any data already
             if (context.Services.Any())
@@ -169,6 +170,33 @@ namespace BarberSalonPrototype.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
+                }
+            }
+        }
+
+        private static async Task SeedDemoUserAsync(UserManager<ApplicationUser> userManager)
+        {
+            var demoEmail = "demo@barbersalon.com";
+            var demoUser = await userManager.FindByEmailAsync(demoEmail);
+
+            if (demoUser == null)
+            {
+                demoUser = new ApplicationUser
+                {
+                    UserName = demoEmail,
+                    Email = demoEmail,
+                    EmailConfirmed = true,
+                    FirstName = "Demo",
+                    LastName = "User",
+                    IsActive = true,
+                    DateJoined = DateTime.Now
+                };
+
+                var result = await userManager.CreateAsync(demoUser, "Demo123!");
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(demoUser, "Customer");
                 }
             }
         }

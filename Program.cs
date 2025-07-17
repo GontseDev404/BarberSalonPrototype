@@ -57,6 +57,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
 else
 {
@@ -65,8 +66,6 @@ else
 
 // Add global exception handling
 app.UseMiddleware<GlobalExceptionMiddleware>();
-
-app.UseHttpsRedirection();
 
 // Configure static files with custom content types for SVG placeholders
 var provider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider();
@@ -97,6 +96,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 // Handle 404 errors properly
 app.UseStatusCodePagesWithReExecute("/Home/NotFound");
