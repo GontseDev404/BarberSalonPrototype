@@ -205,9 +205,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 1,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 1, StaffMemberId = 1, ImageUrl = "/images/gallery/michael-1.jpg", Caption = "Classic Pompadour", SortOrder = 1 },
-                        new GalleryImage { Id = 2, StaffMemberId = 1, ImageUrl = "/images/gallery/michael-2.jpg", Caption = "Modern Fade", SortOrder = 2 },
-                        new GalleryImage { Id = 3, StaffMemberId = 1, ImageUrl = "/images/gallery/michael-3.jpg", Caption = "Beard Styling", SortOrder = 3 }
+                        new GalleryImage { Id = 1, StaffMemberId = 1, ImageUrl = "images/gallery/michael-1.jpg", Caption = "Classic Pompadour", SortOrder = 1 },
+                        new GalleryImage { Id = 2, StaffMemberId = 1, ImageUrl = "images/gallery/michael-2.jpg", Caption = "Modern Fade", SortOrder = 2 },
+                        new GalleryImage { Id = 3, StaffMemberId = 1, ImageUrl = "images/gallery/michael-3.jpg", Caption = "Beard Styling", SortOrder = 3 }
                     }
                 },
                 new StaffMember
@@ -225,9 +225,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 2,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 4, StaffMemberId = 2, ImageUrl = "/images/gallery/sarah-1.jpg", Caption = "Balayage Highlights", SortOrder = 1 },
-                        new GalleryImage { Id = 5, StaffMemberId = 2, ImageUrl = "/images/gallery/sarah-2.jpg", Caption = "Color Transformation", SortOrder = 2 },
-                        new GalleryImage { Id = 6, StaffMemberId = 2, ImageUrl = "/images/gallery/sarah-3.jpg", Caption = "Styling Session", SortOrder = 3 }
+                        new GalleryImage { Id = 4, StaffMemberId = 2, ImageUrl = "images/gallery/sarah-1.jpg", Caption = "Balayage Highlights", SortOrder = 1 },
+                        new GalleryImage { Id = 5, StaffMemberId = 2, ImageUrl = "images/gallery/sarah-2.jpg", Caption = "Color Transformation", SortOrder = 2 },
+                        new GalleryImage { Id = 6, StaffMemberId = 2, ImageUrl = "images/gallery/sarah-3.jpg", Caption = "Styling Session", SortOrder = 3 }
                     }
                 },
                 new StaffMember
@@ -245,9 +245,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 3,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 7, StaffMemberId = 3, ImageUrl = "/images/gallery/david-1.jpg", Caption = "Precision Line-up", SortOrder = 1 },
-                        new GalleryImage { Id = 8, StaffMemberId = 3, ImageUrl = "/images/gallery/david-2.jpg", Caption = "Contemporary Cut", SortOrder = 2 },
-                        new GalleryImage { Id = 9, StaffMemberId = 3, ImageUrl = "/images/gallery/david-3.jpg", Caption = "Traditional Style", SortOrder = 3 }
+                        new GalleryImage { Id = 7, StaffMemberId = 3, ImageUrl = "images/gallery/david-1.jpg", Caption = "Precision Line-up", SortOrder = 1 },
+                        new GalleryImage { Id = 8, StaffMemberId = 3, ImageUrl = "images/gallery/david-2.jpg", Caption = "Contemporary Cut", SortOrder = 2 },
+                        new GalleryImage { Id = 9, StaffMemberId = 3, ImageUrl = "images/gallery/david-3.jpg", Caption = "Traditional Style", SortOrder = 3 }
                     }
                 },
                 new StaffMember
@@ -265,9 +265,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 4,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 10, StaffMemberId = 4, ImageUrl = "/images/gallery/emily-1.jpg", Caption = "Floral Nail Art", SortOrder = 1 },
-                        new GalleryImage { Id = 11, StaffMemberId = 4, ImageUrl = "/images/gallery/emily-2.jpg", Caption = "Gel Manicure", SortOrder = 2 },
-                        new GalleryImage { Id = 12, StaffMemberId = 4, ImageUrl = "/images/gallery/emily-3.jpg", Caption = "Acrylic Design", SortOrder = 3 }
+                        new GalleryImage { Id = 10, StaffMemberId = 4, ImageUrl = "images/gallery/emily-1.jpg", Caption = "Floral Nail Art", SortOrder = 1 },
+                        new GalleryImage { Id = 11, StaffMemberId = 4, ImageUrl = "images/gallery/emily-2.jpg", Caption = "Gel Manicure", SortOrder = 2 },
+                        new GalleryImage { Id = 12, StaffMemberId = 4, ImageUrl = "images/gallery/emily-3.jpg", Caption = "Acrylic Design", SortOrder = 3 }
                     }
                 },
                 new StaffMember
@@ -285,9 +285,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 5,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 13, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-1.jpg", Caption = "Facial Treatment", SortOrder = 1 },
-                        new GalleryImage { Id = 14, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-2.jpg", Caption = "Skin Analysis", SortOrder = 2 },
-                        new GalleryImage { Id = 15, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-3.jpg", Caption = "Anti-aging Treatment", SortOrder = 3 }
+                        new GalleryImage { Id = 13, StaffMemberId = 5, ImageUrl = "images/gallery/alex-1.jpg", Caption = "Facial Treatment", SortOrder = 1 },
+                        new GalleryImage { Id = 14, StaffMemberId = 5, ImageUrl = "images/gallery/alex-2.jpg", Caption = "Skin Analysis", SortOrder = 2 },
+                        new GalleryImage { Id = 15, StaffMemberId = 5, ImageUrl = "images/gallery/alex-3.jpg", Caption = "Anti-aging Treatment", SortOrder = 3 }
                     }
                 },
                 new StaffMember
@@ -305,9 +305,9 @@ namespace BarberSalonPrototype.Services
                     SortOrder = 6,
                     Gallery = new List<GalleryImage>
                     {
-                        new GalleryImage { Id = 16, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-1.jpg", Caption = "Bridal Look", SortOrder = 1 },
-                        new GalleryImage { Id = 17, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-2.jpg", Caption = "Editorial Glam", SortOrder = 2 },
-                        new GalleryImage { Id = 18, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-3.jpg", Caption = "Natural Beauty", SortOrder = 3 }
+                        new GalleryImage { Id = 16, StaffMemberId = 6, ImageUrl = "images/gallery/jessica-1.jpg", Caption = "Bridal Look", SortOrder = 1 },
+                        new GalleryImage { Id = 17, StaffMemberId = 6, ImageUrl = "images/gallery/jessica-2.jpg", Caption = "Editorial Glam", SortOrder = 2 },
+                        new GalleryImage { Id = 18, StaffMemberId = 6, ImageUrl = "images/gallery/jessica-3.jpg", Caption = "Natural Beauty", SortOrder = 3 }
                     }
                 }
             };
