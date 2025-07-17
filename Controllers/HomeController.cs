@@ -64,8 +64,9 @@ namespace BarberSalonPrototype.Controllers
 
         public new IActionResult NotFound()
         {
-            _logger.LogWarning("404 page accessed for URL: {Url}", HttpContext.Request.Path);
-            return View("NotFound");
+            if (HttpContext.Request.Path != "/Home/NotFound")
+                _logger.LogWarning("404 page accessed for URL: {Url}", HttpContext.Request.Path);
+            return View("~/Views/Shared/NotFound.cshtml");
         }
 
         [HttpPost]
@@ -95,11 +96,5 @@ namespace BarberSalonPrototype.Controllers
                 return View("Contact", contactMessage);
             }
         }
-    }
-
-    public class HomeViewModel
-    {
-        public List<Service> PopularServices { get; set; } = new List<Service>();
-        public List<StaffMember> FeaturedStaff { get; set; } = new List<StaffMember>();
     }
 } 

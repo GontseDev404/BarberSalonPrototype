@@ -1,0 +1,240 @@
+@model IEnumerable<BarberSalonPrototype.Models.Booking>
+@{
+    ViewData["Title"] = "Manage Bookings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Manage Bookings</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Export Report
+    </a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Bookings</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Service</th>
+                        <th>Staff</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.Id</td>
+                            <td>@booking.FullName</td>
+                            <td>@booking.Email</td>
+                            <td>@booking.PhoneNumber</td>
+                            <td>@booking.Service?.Name</td>
+                            <td>@booking.StaffMember?.FullName</td>
+                            <td>@booking.AppointmentDate.ToString("MMM dd, yyyy")</td>
+                            <td>@booking.AppointmentTime</td>
+                            <td>
+                                <span class="badge badge-@(booking.Status switch 
+                                { 
+                                    BookingStatus.Pending => "warning",
+                                    BookingStatus.Confirmed => "success", 
+                                    BookingStatus.Completed => "info",
+                                    BookingStatus.Cancelled => "danger",
+                                    _ => "secondary" 
+                                })">
+                                    @booking.Status
+                                </span>
+                            </td>
+                            <td>@booking.CreatedDate.ToString("MMM dd, yyyy")</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @if (booking.Status == BookingStatus.Pending)
+                                        {
+                                            <li>
+                                                <form asp-action="UpdateBookingStatus" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@booking.Id" />
+                                                    <input type="hidden" name="status" value="@BookingStatus.Confirmed" />
+                                                    <button type="submit" class="dropdown-item text-success">
+                                                        <i class="fas fa-check"></i> Confirm
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        }
+                                        @if (booking.Status == BookingStatus.Confirmed)
+                                        {
+                                            <li>
+                                                <form asp-action="UpdateBookingStatus" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@booking.Id" />
+                                                    <input type="hidden" name="status" value="@BookingStatus.Completed" />
+                                                    <button type="submit" class="dropdown-item text-info">
+                                                        <i class="fas fa-check-double"></i> Mark Complete
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        }
+                                        @if (booking.Status != BookingStatus.Cancelled && booking.Status != BookingStatus.Completed)
+                                        {
+                                            <li>
+                                                <form asp-action="UpdateBookingStatus" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@booking.Id" />
+                                                    <input type="hidden" name="status" value="@BookingStatus.Cancelled" />
+                                                    <button type="submit" class="dropdown-item text-danger" 
+                                                            onclick="return confirm('Are you sure you want to cancel this booking?')">
+                                                        <i class="fas fa-times"></i> Cancel
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        }
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="#" onclick="viewBookingDetails(@booking.Id)">
+                                                <i class="fas fa-eye"></i> View Details
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Details Modal -->
+<div class="modal fade" id="bookingDetailsModal" tabindex="-1" aria-labelledby="bookingDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingDetailsModalLabel">Booking Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="bookingDetailsContent">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+$(document).ready(function() {
+    $('#dataTable').DataTable({
+        "pageLength": 25,
+        "order": [[ 9, "desc" ]], // Sort by created date descending
+        "columnDefs": [
+            { "orderable": false, "targets": 10 } // Disable sorting on Actions column
+        ]
+    });
+});
+
+function viewBookingDetails(bookingId) {
+    // Find the booking data from the table
+    const row = $(`tr:has(td:first-child:contains(${bookingId}))`);
+    const cells = row.find('td');
+    
+    const customer = cells.eq(1).text();
+    const email = cells.eq(2).text();
+    const phone = cells.eq(3).text();
+    const service = cells.eq(4).text();
+    const staff = cells.eq(5).text();
+    const date = cells.eq(6).text();
+    const time = cells.eq(7).text();
+    const status = cells.eq(8).text().trim();
+    const created = cells.eq(9).text();
+    
+    const content = `
+        <div class="row">
+            <div class="col-md-6">
+                <h6 class="text-primary">Customer Information</h6>
+                <p><strong>Name:</strong> ${customer}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-primary">Appointment Details</h6>
+                <p><strong>Service:</strong> ${service}</p>
+                <p><strong>Staff Member:</strong> ${staff}</p>
+                <p><strong>Date:</strong> ${date}</p>
+                <p><strong>Time:</strong> ${time}</p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <h6 class="text-primary">Booking Information</h6>
+                <p><strong>Status:</strong> <span class="badge badge-secondary">${status}</span></p>
+                <p><strong>Created:</strong> ${created}</p>
+                <p><strong>Booking ID:</strong> #${bookingId}</p>
+            </div>
+        </div>
+    `;
+    
+    $('#bookingDetailsContent').html(content);
+    $('#bookingDetailsModal').modal('show');
+}
+</script>
+}
+
+<style>
+.badge-warning {
+    background-color: #f6c23e;
+    color: #fff;
+}
+.badge-success {
+    background-color: #1cc88a;
+    color: #fff;
+}
+.badge-info {
+    background-color: #36b9cc;
+    color: #fff;
+}
+.badge-danger {
+    background-color: #e74a3b;
+    color: #fff;
+}
+.badge-secondary {
+    background-color: #858796;
+    color: #fff;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fc;
+}
+
+.text-success {
+    color: #1cc88a !important;
+}
+
+.text-info {
+    color: #36b9cc !important;
+}
+
+.text-danger {
+    color: #e74a3b !important;
+}
+</style>

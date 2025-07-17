@@ -1,16 +1,18 @@
 using BarberSalonPrototype.Models;
+using BarberSalonPrototype.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BarberSalonPrototype.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly List<Booking> _bookings;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<BookingService> _logger;
 
-        public BookingService(ILogger<BookingService> logger)
+        public BookingService(ApplicationDbContext context, ILogger<BookingService> logger)
         {
+            _context = context;
             _logger = logger;
-            _bookings = InitializeBookingData();
         }
 
         public async Task<IEnumerable<Booking>> GetAllBookingsAsync()
@@ -18,7 +20,11 @@ namespace BarberSalonPrototype.Services
             try
             {
                 _logger.LogInformation("Retrieving all bookings");
-                return await Task.FromResult(_bookings.OrderByDescending(b => b.CreatedDate));
+                return await _context.Bookings
+                    .Include(b => b.Service)
+                    .Include(b => b.StaffMember)
+                    .OrderByDescending(b => b.CreatedDate)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -32,7 +38,10 @@ namespace BarberSalonPrototype.Services
             try
             {
                 _logger.LogInformation("Retrieving booking with ID: {Id}", id);
-                return await Task.FromResult(_bookings.FirstOrDefault(b => b.Id == id));
+                return await _context.Bookings
+                    .Include(b => b.Service)
+                    .Include(b => b.StaffMember)
+                    .FirstOrDefaultAsync(b => b.Id == id);
             }
             catch (Exception ex)
             {
@@ -46,7 +55,11 @@ namespace BarberSalonPrototype.Services
             try
             {
                 _logger.LogInformation("Retrieving bookings for date: {Date}", date);
-                return await Task.FromResult(_bookings.Where(b => b.AppointmentDate.Date == date.Date));
+                return await _context.Bookings
+                    .Include(b => b.Service)
+                    .Include(b => b.StaffMember)
+                    .Where(b => b.AppointmentDate.Date == date.Date)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -60,8 +73,13 @@ namespace BarberSalonPrototype.Services
             try
             {
                 _logger.LogInformation("Retrieving upcoming bookings");
-                return await Task.FromResult(_bookings.Where(b => b.IsUpcoming && b.Status != BookingStatus.Cancelled)
-                    .OrderBy(b => b.AppointmentDateTime));
+                var currentDateTime = DateTime.Now;
+                return await _context.Bookings
+                    .Include(b => b.Service)
+                    .Include(b => b.StaffMember)
+                    .Where(b => b.AppointmentDateTime > currentDateTime && b.Status != BookingStatus.Cancelled)
+                    .OrderBy(b => b.AppointmentDateTime)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -75,8 +93,12 @@ namespace BarberSalonPrototype.Services
             try
             {
                 _logger.LogInformation("Retrieving bookings by status: {Status}", status);
-                return await Task.FromResult(_bookings.Where(b => b.Status == status)
-                    .OrderByDescending(b => b.CreatedDate));
+                return await _context.Bookings
+                    .Include(b => b.Service)
+                    .Include(b => b.StaffMember)
+                    .Where(b => b.Status == status)
+                    .OrderByDescending(b => b.CreatedDate)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -91,13 +113,21 @@ namespace BarberSalonPrototype.Services
             {
                 _logger.LogInformation("Creating new booking for: {Name}", booking.FullName);
                 
-                booking.Id = _bookings.Max(b => b.Id) + 1;
                 booking.CreatedDate = DateTime.Now;
                 booking.Status = BookingStatus.Pending;
                 
-                _bookings.Add(booking);
+                _context.Bookings.Add(booking);
+                await _context.SaveChangesAsync();
                 
-                return await Task.FromResult(booking);
+                // Reload with navigation properties
+                await _context.Entry(booking)
+                    .Reference(b => b.Service)
+                    .LoadAsync();
+                await _context.Entry(booking)
+                    .Reference(b => b.StaffMember)
+                    .LoadAsync();
+                
+                return booking;
             }
             catch (Exception ex)
             {
@@ -112,16 +142,24 @@ namespace BarberSalonPrototype.Services
             {
                 _logger.LogInformation("Updating booking with ID: {Id}", booking.Id);
                 
-                var existingBooking = _bookings.FirstOrDefault(b => b.Id == booking.Id);
+                var existingBooking = await _context.Bookings.FindAsync(booking.Id);
                 if (existingBooking == null)
                 {
                     throw new ArgumentException($"Booking with ID {booking.Id} not found");
                 }
 
-                var index = _bookings.IndexOf(existingBooking);
-                _bookings[index] = booking;
+                _context.Entry(existingBooking).CurrentValues.SetValues(booking);
+                await _context.SaveChangesAsync();
                 
-                return await Task.FromResult(booking);
+                // Reload with navigation properties
+                await _context.Entry(existingBooking)
+                    .Reference(b => b.Service)
+                    .LoadAsync();
+                await _context.Entry(existingBooking)
+                    .Reference(b => b.StaffMember)
+                    .LoadAsync();
+                
+                return existingBooking;
             }
             catch (Exception ex)
             {
@@ -136,13 +174,16 @@ namespace BarberSalonPrototype.Services
             {
                 _logger.LogInformation("Deleting booking with ID: {Id}", id);
                 
-                var booking = _bookings.FirstOrDefault(b => b.Id == id);
+                var booking = await _context.Bookings.FindAsync(id);
                 if (booking == null)
                 {
                     return false;
                 }
 
-                return await Task.FromResult(_bookings.Remove(booking));
+                _context.Bookings.Remove(booking);
+                await _context.SaveChangesAsync();
+                
+                return true;
             }
             catch (Exception ex)
             {
@@ -157,14 +198,16 @@ namespace BarberSalonPrototype.Services
             {
                 _logger.LogInformation("Confirming booking with ID: {Id}", id);
                 
-                var booking = _bookings.FirstOrDefault(b => b.Id == id);
+                var booking = await _context.Bookings.FindAsync(id);
                 if (booking == null)
                 {
                     return false;
                 }
 
                 booking.Status = BookingStatus.Confirmed;
-                return await Task.FromResult(true);
+                await _context.SaveChangesAsync();
+                
+                return true;
             }
             catch (Exception ex)
             {
@@ -179,14 +222,16 @@ namespace BarberSalonPrototype.Services
             {
                 _logger.LogInformation("Cancelling booking with ID: {Id}", id);
                 
-                var booking = _bookings.FirstOrDefault(b => b.Id == id);
+                var booking = await _context.Bookings.FindAsync(id);
                 if (booking == null)
                 {
                     return false;
                 }
 
                 booking.Status = BookingStatus.Cancelled;
-                return await Task.FromResult(true);
+                await _context.SaveChangesAsync();
+                
+                return true;
             }
             catch (Exception ex)
             {
@@ -211,17 +256,17 @@ namespace BarberSalonPrototype.Services
                 };
 
                 // Get existing bookings for this date and staff member
-                var existingBookings = _bookings.Where(b => 
-                    b.AppointmentDate.Date == date.Date && 
-                    b.StaffMemberId == staffId && 
-                    b.Status != BookingStatus.Cancelled)
+                var existingBookings = await _context.Bookings
+                    .Where(b => b.AppointmentDate.Date == date.Date && 
+                               b.StaffMemberId == staffId && 
+                               b.Status != BookingStatus.Cancelled)
                     .Select(b => b.AppointmentTime)
-                    .ToList();
+                    .ToListAsync();
 
                 // Return available time slots
                 var availableSlots = businessHours.Except(existingBookings).ToList();
                 
-                return await Task.FromResult(availableSlots);
+                return availableSlots;
             }
             catch (Exception ex)
             {
@@ -240,55 +285,19 @@ namespace BarberSalonPrototype.Services
                 var timeString = dateTime.ToString("HH:mm");
                 var date = dateTime.Date;
                 
-                var conflictingBooking = _bookings.FirstOrDefault(b => 
+                var conflictingBooking = await _context.Bookings.FirstOrDefaultAsync(b => 
                     b.AppointmentDate.Date == date &&
                     b.AppointmentTime == timeString &&
                     b.StaffMemberId == staffId &&
                     b.Status != BookingStatus.Cancelled);
                 
-                return await Task.FromResult(conflictingBooking == null);
+                return conflictingBooking == null;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error checking time slot availability");
                 throw;
             }
-        }
-
-        private List<Booking> InitializeBookingData()
-        {
-            return new List<Booking>
-            {
-                new Booking
-                {
-                    Id = 1,
-                    FirstName = "John",
-                    LastName = "Doe",
-                    Email = "john.doe@example.com",
-                    PhoneNumber = "+27123456789",
-                    ServiceId = 1,
-                    StaffMemberId = 1,
-                    AppointmentDate = DateTime.Today.AddDays(2),
-                    AppointmentTime = "10:00",
-                    SpecialRequests = "Please make it extra sharp",
-                    Status = BookingStatus.Confirmed,
-                    CreatedDate = DateTime.Now.AddDays(-1)
-                },
-                new Booking
-                {
-                    Id = 2,
-                    FirstName = "Jane",
-                    LastName = "Smith",
-                    Email = "jane.smith@example.com",
-                    PhoneNumber = "+27987654321",
-                    ServiceId = 3,
-                    StaffMemberId = 2,
-                    AppointmentDate = DateTime.Today.AddDays(1),
-                    AppointmentTime = "14:30",
-                    Status = BookingStatus.Pending,
-                    CreatedDate = DateTime.Now.AddHours(-2)
-                }
-            };
         }
     }
 } 

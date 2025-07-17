@@ -1,7 +1,42 @@
 using BarberSalonPrototype.Models;
 using BarberSalonPrototype.Services;
+using BarberSalonPrototype.Data;
+using BarberSalonPrototype.Middleware;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Entity Framework
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add Identity
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
+{
+    // Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    // User settings
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    options.User.RequireUniqueEmail = true;
+
+    // Email confirmation
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,6 +58,13 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+else
+{
+    app.UseDeveloperExceptionPage();
+}
+
+// Add global exception handling
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
@@ -49,22 +91,23 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Custom error handling for 404
-app.Use(async (context, next) =>
+// Handle 404 errors properly
+app.UseStatusCodePagesWithReExecute("/Home/NotFound");
+
+// Initialize database
+using (var scope = app.Services.CreateScope())
 {
-    await next();
-    
-    if (context.Response.StatusCode == 404)
-    {
-        context.Request.Path = "/Home/NotFound";
-        await next();
-    }
-});
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await BarberSalonPrototype.Data.DbInitializer.InitializeAsync(context, userManager, roleManager);
+}
 
 app.Run(); 

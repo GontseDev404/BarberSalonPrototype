@@ -26,7 +26,7 @@ namespace BarberSalonPrototype.Models
         public string ImageUrl { get; set; } = string.Empty;
 
         [Display(Name = "Specializations")]
-        public List<string> Specializations { get; set; } = new List<string>();
+        public List<StaffSpecialization> Specializations { get; set; } = new List<StaffSpecialization>();
 
         [Display(Name = "Years of Experience")]
         [Range(0, 50, ErrorMessage = "Years of experience must be between 0 and 50")]

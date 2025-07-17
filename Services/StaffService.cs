@@ -196,8 +196,13 @@ namespace BarberSalonPrototype.Services
                     FullName = "Michael Rodriguez",
                     Role = "Master Barber",
                     Description = "With over 15 years of experience, Michael specializes in classic cuts, fades, and modern styling. His attention to detail and passion for the craft makes him a favorite among our clients.",
-                    ImageUrl = "images/staff/Michael-Rodriguez.png",
-                    Specializations = new List<string> { "Classic Cuts", "Fades", "Beard Trimming", "Modern Styling" },
+                    ImageUrl = "/images/staff/Michael-Rodriguez.png",
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Classic Cuts" },
+                        new StaffSpecialization { Name = "Fades" },
+                        new StaffSpecialization { Name = "Beard Trimming" },
+                        new StaffSpecialization { Name = "Modern Styling" }
+                    },
                     YearsOfExperience = 15,
                     InstagramUrl = "https://instagram.com/michaelbarber",
                     FacebookUrl = "https://facebook.com/michaelbarber",
@@ -216,8 +221,13 @@ namespace BarberSalonPrototype.Services
                     FullName = "Sarah Johnson",
                     Role = "Hair Stylist",
                     Description = "Sarah brings creativity and innovation to every haircut. She excels in color treatments, highlights, and creating unique styles that reflect each client's personality.",
-                    ImageUrl = "images/staff/Sarah-Johnson.png",
-                    Specializations = new List<string> { "Color Treatments", "Highlights", "Balayage", "Styling" },
+                    ImageUrl = "/images/staff/Sarah-Johnson.png",
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Color Treatments" },
+                        new StaffSpecialization { Name = "Highlights" },
+                        new StaffSpecialization { Name = "Balayage" },
+                        new StaffSpecialization { Name = "Styling" }
+                    },
                     YearsOfExperience = 8,
                     InstagramUrl = "https://instagram.com/sarahstylist",
                     FacebookUrl = "https://facebook.com/sarahstylist",
@@ -236,8 +246,13 @@ namespace BarberSalonPrototype.Services
                     FullName = "David Chen",
                     Role = "Barber",
                     Description = "David is known for his precision cuts and ability to create clean, sharp lines. He specializes in contemporary styles and traditional barbering techniques.",
-                    ImageUrl = "images/staff/David-Chen.png",
-                    Specializations = new List<string> { "Precision Cuts", "Line-ups", "Contemporary Styles", "Traditional Techniques" },
+                    ImageUrl = "/images/staff/David-Chen.png",
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Precision Cuts" },
+                        new StaffSpecialization { Name = "Line-ups" },
+                        new StaffSpecialization { Name = "Contemporary Styles" },
+                        new StaffSpecialization { Name = "Traditional Techniques" }
+                    },
                     YearsOfExperience = 12,
                     InstagramUrl = "https://instagram.com/davidbarber",
                     FacebookUrl = "https://facebook.com/davidbarber",
@@ -256,8 +271,13 @@ namespace BarberSalonPrototype.Services
                     FullName = "Emily Martinez",
                     Role = "Nail Technician",
                     Description = "Emily creates stunning nail art and provides exceptional nail care services. Her attention to detail and artistic flair make every manicure and pedicure a work of art.",
-                    ImageUrl = "images/staff/Emily-Martinez.png",
-                    Specializations = new List<string> { "Nail Art", "Gel Manicures", "Acrylic Nails", "Nail Care" },
+                    ImageUrl = "/images/staff/Emily-Martinez.png",
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Nail Art" },
+                        new StaffSpecialization { Name = "Gel Manicures" },
+                        new StaffSpecialization { Name = "Acrylic Nails" },
+                        new StaffSpecialization { Name = "Nail Care" }
+                    },
                     YearsOfExperience = 6,
                     InstagramUrl = "https://instagram.com/emilynails",
                     FacebookUrl = "https://facebook.com/emilynails",
@@ -276,8 +296,13 @@ namespace BarberSalonPrototype.Services
                     FullName = "Alex Thompson",
                     Role = "Skin Care Specialist",
                     Description = "Alex is passionate about helping clients achieve healthy, glowing skin. She offers personalized treatments and expert advice on skincare routines.",
-                    ImageUrl = "images/staff/Alex-Thompson.png",
-                    Specializations = new List<string> { "Facial Treatments", "Skin Analysis", "Anti-aging", "Acne Treatment" },
+                    ImageUrl = "/images/staff/Alex-Thompson.png",
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Facial Treatments" },
+                        new StaffSpecialization { Name = "Skin Analysis" },
+                        new StaffSpecialization { Name = "Anti-aging" },
+                        new StaffSpecialization { Name = "Acne Treatment" }
+                    },
                     YearsOfExperience = 10,
                     InstagramUrl = "https://instagram.com/alexskincare",
                     FacebookUrl = "https://facebook.com/alexskincare",
@@ -296,8 +321,14 @@ namespace BarberSalonPrototype.Services
                     FullName = "Jessica Lee",
                     Role = "Makeup Artist",
                     Description = "Jessica is a creative makeup artist with a passion for enhancing natural beauty. She specializes in bridal, event, and editorial makeup, ensuring every client looks and feels their best.",
-                    ImageUrl = "images/staff/Jessica-Lee.png", // Add this image to wwwroot/images/staff/
-                    Specializations = new List<string> { "Bridal Makeup", "Event Makeup", "Editorial Makeup", "Natural Looks", "Makeup Lessons" },
+                    ImageUrl = "/images/staff/Jessica-Lee.png", 
+                    Specializations = new List<StaffSpecialization> {
+                        new StaffSpecialization { Name = "Bridal Makeup" },
+                        new StaffSpecialization { Name = "Event Makeup" },
+                        new StaffSpecialization { Name = "Editorial Makeup" },
+                        new StaffSpecialization { Name = "Natural Looks" },
+                        new StaffSpecialization { Name = "Makeup Lessons" }
+                    },
                     YearsOfExperience = 7,
                     InstagramUrl = "https://instagram.com/jessicamakeup",
                     FacebookUrl = "https://facebook.com/jessicamakeup",
