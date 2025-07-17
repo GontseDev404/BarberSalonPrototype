@@ -15,22 +15,19 @@ namespace BarberSalonPrototype.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             try
             {
                 _logger.LogInformation("Loading services page");
-                
-                var allServices = _serviceService.GetAllServicesAsync().Result;
-                var categories = _serviceService.GetServiceCategoriesAsync().Result;
-                
+                var allServices = await _serviceService.GetAllServicesAsync();
+                var categories = await _serviceService.GetServiceCategoriesAsync();
                 var viewModel = new ServicesViewModel
                 {
                     Services = allServices.ToList(),
                     Categories = categories.ToList(),
                     SelectedCategory = null
                 };
-
                 return View(viewModel);
             }
             catch (Exception ex)
@@ -122,12 +119,5 @@ namespace BarberSalonPrototype.Controllers
                 return Json(new { success = false, message = "An error occurred while loading services" });
             }
         }
-    }
-
-    public class ServicesViewModel
-    {
-        public List<Service> Services { get; set; } = new List<Service>();
-        public List<ServiceCategory> Categories { get; set; } = new List<ServiceCategory>();
-        public ServiceCategory? SelectedCategory { get; set; }
     }
 } 
