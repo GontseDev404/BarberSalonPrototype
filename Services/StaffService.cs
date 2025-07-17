@@ -196,7 +196,7 @@ namespace BarberSalonPrototype.Services
                     FullName = "Michael Rodriguez",
                     Role = "Master Barber",
                     Description = "With over 15 years of experience, Michael specializes in classic cuts, fades, and modern styling. His attention to detail and passion for the craft makes him a favorite among our clients.",
-                    ImageUrl = "/images/staff/michael-rodriguez.jpg",
+                    ImageUrl = "images/staff/Michael-Rodriguez.png",
                     Specializations = new List<string> { "Classic Cuts", "Fades", "Beard Trimming", "Modern Styling" },
                     YearsOfExperience = 15,
                     InstagramUrl = "https://instagram.com/michaelbarber",
@@ -216,7 +216,7 @@ namespace BarberSalonPrototype.Services
                     FullName = "Sarah Johnson",
                     Role = "Hair Stylist",
                     Description = "Sarah brings creativity and innovation to every haircut. She excels in color treatments, highlights, and creating unique styles that reflect each client's personality.",
-                    ImageUrl = "/images/staff/sarah-johnson.jpg",
+                    ImageUrl = "images/staff/Sarah-Johnson.png",
                     Specializations = new List<string> { "Color Treatments", "Highlights", "Balayage", "Styling" },
                     YearsOfExperience = 8,
                     InstagramUrl = "https://instagram.com/sarahstylist",
@@ -236,7 +236,7 @@ namespace BarberSalonPrototype.Services
                     FullName = "David Chen",
                     Role = "Barber",
                     Description = "David is known for his precision cuts and ability to create clean, sharp lines. He specializes in contemporary styles and traditional barbering techniques.",
-                    ImageUrl = "/images/staff/david-chen.jpg",
+                    ImageUrl = "images/staff/David-Chen.png",
                     Specializations = new List<string> { "Precision Cuts", "Line-ups", "Contemporary Styles", "Traditional Techniques" },
                     YearsOfExperience = 12,
                     InstagramUrl = "https://instagram.com/davidbarber",
@@ -256,7 +256,7 @@ namespace BarberSalonPrototype.Services
                     FullName = "Emily Martinez",
                     Role = "Nail Technician",
                     Description = "Emily creates stunning nail art and provides exceptional nail care services. Her attention to detail and artistic flair make every manicure and pedicure a work of art.",
-                    ImageUrl = "/images/staff/emily-martinez.jpg",
+                    ImageUrl = "images/staff/Emily-Martinez.png",
                     Specializations = new List<string> { "Nail Art", "Gel Manicures", "Acrylic Nails", "Nail Care" },
                     YearsOfExperience = 6,
                     InstagramUrl = "https://instagram.com/emilynails",
@@ -276,7 +276,7 @@ namespace BarberSalonPrototype.Services
                     FullName = "Alex Thompson",
                     Role = "Skin Care Specialist",
                     Description = "Alex is passionate about helping clients achieve healthy, glowing skin. She offers personalized treatments and expert advice on skincare routines.",
-                    ImageUrl = "/images/staff/alex-thompson.jpg",
+                    ImageUrl = "images/staff/Alex-Thompson.png",
                     Specializations = new List<string> { "Facial Treatments", "Skin Analysis", "Anti-aging", "Acne Treatment" },
                     YearsOfExperience = 10,
                     InstagramUrl = "https://instagram.com/alexskincare",
@@ -288,6 +288,26 @@ namespace BarberSalonPrototype.Services
                         new GalleryImage { Id = 13, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-1.jpg", Caption = "Facial Treatment", SortOrder = 1 },
                         new GalleryImage { Id = 14, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-2.jpg", Caption = "Skin Analysis", SortOrder = 2 },
                         new GalleryImage { Id = 15, StaffMemberId = 5, ImageUrl = "/images/gallery/alex-3.jpg", Caption = "Anti-aging Treatment", SortOrder = 3 }
+                    }
+                },
+                new StaffMember
+                {
+                    Id = 6,
+                    FullName = "Jessica Lee",
+                    Role = "Makeup Artist",
+                    Description = "Jessica is a creative makeup artist with a passion for enhancing natural beauty. She specializes in bridal, event, and editorial makeup, ensuring every client looks and feels their best.",
+                    ImageUrl = "images/staff/Jessica-Lee.png", // Add this image to wwwroot/images/staff/
+                    Specializations = new List<string> { "Bridal Makeup", "Event Makeup", "Editorial Makeup", "Natural Looks", "Makeup Lessons" },
+                    YearsOfExperience = 7,
+                    InstagramUrl = "https://instagram.com/jessicamakeup",
+                    FacebookUrl = "https://facebook.com/jessicamakeup",
+                    TikTokUrl = "https://tiktok.com/@jessicamakeup",
+                    SortOrder = 6,
+                    Gallery = new List<GalleryImage>
+                    {
+                        new GalleryImage { Id = 16, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-1.jpg", Caption = "Bridal Look", SortOrder = 1 },
+                        new GalleryImage { Id = 17, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-2.jpg", Caption = "Editorial Glam", SortOrder = 2 },
+                        new GalleryImage { Id = 18, StaffMemberId = 6, ImageUrl = "/images/gallery/jessica-3.jpg", Caption = "Natural Beauty", SortOrder = 3 }
                     }
                 }
             };
